@@ -19,11 +19,11 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Flip"
             android:id="@+id/flipButton"
             android:background="#224AC9"
             android:textColor="#FFFFFF"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:text="@string/activityFlashCardFlipButton" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -37,8 +37,8 @@
                 android:layout_weight="0.5"
                 android:background="#224AC9"
                 android:textColor="#FFFFFF"
-                android:text="Previous"
-                android:id="@+id/backButton" />
+                android:id="@+id/previousButton"
+                android:text="@string/activityFlashCardPreviousButton" />
 
             <Button
                 android:layout_width="0dp"
@@ -46,7 +46,6 @@
                 android:layout_weight="0.5"
                 android:background="#224AC9"
                 android:textColor="#FFFFFF"
-                android:text="Next"
                 android:id="@+id/nextButton" />
         </LinearLayout>
     </LinearLayout>
@@ -58,12 +57,11 @@
         android:textColor="#913AC9"
         android:id="@+id/flashCardView"
         android:textStyle="bold"
-        android:text="4 + 4"
         android:paddingTop="18dp"
         android:textSize="52sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        />
+        android:text="@string/activityFlashCardDefaultEquationString" />
 
 </RelativeLayout>
     <!--android:text="@string/flashCardText"-->

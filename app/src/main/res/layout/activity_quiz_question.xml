@@ -14,7 +14,7 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="44sp"
                 android:textColor="#DA3A3A"
-                android:text="Question Here"
+                android:text="@string/activityQuizQuestionDefaultText"
                 android:id="@+id/quizQuestion" />
 
 
@@ -27,7 +27,7 @@
                     android:textColor="#FFFFFF"
 
                     android:layout_centerInParent="true"
-                    android:text="Answer 0"
+                    android:text="@string/activityQuizQuestionAnswer0Button"
                     android:id="@+id/answer0" />
 
                 <Button
@@ -39,7 +39,7 @@
                     android:textColor="#FFFFFF"
                     android:layout_below="@id/answer0"
                     android:layout_centerHorizontal="true"
-                    android:text="Answer 1"
+                    android:text="@string/activityQuizQuestionAnswer1Button"
                     android:id="@+id/answer1" />
 
                 <Button
@@ -51,7 +51,7 @@
                     android:textColor="#FFFFFF"
                     android:layout_below="@id/answer1"
                     android:layout_centerHorizontal="true"
-                    android:text="Answer 2"
+                    android:text="@string/activityQuizQuestionAnswer2Button"
                     android:id="@+id/answer2" />
 
 
@@ -64,7 +64,7 @@
                     android:layout_margin="5dp"
                     android:background="#224AC9"
                     android:textColor="#FFFFFF"
-                    android:text="Answer 3"
+                    android:text="@string/activityQuizQuestionAnswer3Button"
                     android:id="@+id/answer3" />
 
 

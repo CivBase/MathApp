@@ -13,7 +13,7 @@
       android:layout_alignParentTop="true"
       android:layout_alignParentRight="true">
       <TextView
-          android:text="0"
+          android:text="@string/fragmentProblemsDefaultNumber1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:id="@+id/pass"
@@ -22,7 +22,7 @@
           android:textStyle="bold"
           />
       <TextView
-          android:text="/3"
+          android:text="@string/fragmentProblemsDefaultNumber2"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:id="@+id/outof"
@@ -36,7 +36,7 @@
 
 
     <TextView
-        android:text="Which numbers "
+        android:text="@string/fragmentProblemsText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/problem_root"
@@ -47,7 +47,7 @@
         android:paddingTop="32dp" />
 
     <TextView
-        android:text="ADD"
+        android:text="@string/fragmentProblemsOperation"
         android:id="@+id/problems_subject"
         android:layout_below="@id/problem_root"
         android:layout_width="wrap_content"
@@ -56,10 +56,11 @@
         android:paddingLeft="64dp"
         android:textStyle="bold"
         android:paddingTop="16dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingRight="5dp" />
 
     <TextView
-        android:text=" to "
+        android:text="@string/fragmentProblemsText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/problem_root"
@@ -68,10 +69,12 @@
         android:textColor="#DA3A3A"
         android:textSize="35sp"
         android:textStyle="bold"
-        android:paddingTop="16dp" />
+        android:paddingTop="16dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
 
     <TextView
-        android:text="12"
+        android:text="@string/fragmentProblemsDefaultNumber3"
         android:id="@+id/problem_total"
         android:layout_below="@id/problem_root"
         android:layout_width="wrap_content"
@@ -80,10 +83,12 @@
         android:textSize="35sp"
         android:textStyle="bold"
         android:paddingTop="16dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
 
     <TextView
-        android:text="\?"
+        android:text="@string/fragmentProblemsText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/problem_root"
@@ -92,13 +97,14 @@
         android:textSize="35sp"
         android:textStyle="bold"
         android:paddingTop="16dp"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:paddingLeft="5dp" />
 
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4 + 4 + 4"
+        android:text="@string/fragmentProblemsCheckBox1"
         android:textColor="#913AC9"
         android:textSize="20sp"
         android:padding="16dp"
@@ -110,7 +116,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3 + 3 + 3 + 3"
+        android:text="@string/fragmentProblemsCheckBox2"
         android:textColor="#913AC9"
         android:textSize="20sp"
         android:padding="16dp"
@@ -121,7 +127,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1 + 2 + 3 + 4"
+        android:text="@string/fragmentProblemsCheckBox3"
         android:textColor="#913AC9"
         android:textSize="20sp"
         android:padding="16dp"
@@ -132,7 +138,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="6 + 6"
+        android:text="@string/fragmentProblemsCheckBox4"
         android:textColor="#913AC9"
         android:textSize="20sp"
         android:padding="16dp"
@@ -148,7 +154,7 @@
         android:padding="15dp"
         android:textColor="#FFFFFF"
         android:inputType="number"
-        android:text="SUBMIT"
+        android:text="@string/fragmentProblemsSubmitButton"
         android:textSize="20sp"
         android:layout_margin="32dp"
         android:background="#224AC9"

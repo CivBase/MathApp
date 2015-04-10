@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:text="If you have "
+        android:text="@string/fragmentPictureText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/problem_root"
@@ -11,10 +11,10 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:paddingLeft="26dp"
-        android:paddingTop="26dp"/>
+        android:paddingTop="26dp"
+        android:paddingRight="5dp" />
 
     <TextView
-        android:text="5"
         android:id="@+id/picture_x"
         android:layout_toRightOf="@id/problem_root"
         android:layout_width="wrap_content"
@@ -22,10 +22,13 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:paddingTop="26dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/fragmentPictureDefaultNumber1"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
 
     <TextView
-        android:text=" squares"
+        android:text="@string/fragmentPictureText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/picture_lable"
@@ -33,7 +36,8 @@
         android:textColor="#DA3A3A"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:paddingTop="26dp"/>
+        android:paddingTop="26dp"
+        android:paddingLeft="5dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -47,7 +51,7 @@
     </LinearLayout>
 
     <TextView
-        android:text="and you "
+        android:text="@string/fragmentPictureText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/picture_x_layout"
@@ -56,10 +60,11 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:paddingLeft="26dp"
-        android:paddingTop="26dp"/>
+        android:paddingTop="26dp"
+        android:paddingRight="5dp" />
 
     <TextView
-        android:text="ADD "
+        android:text="@string/fragmentPictureDerfaultOperation"
         android:id="@+id/picture_subject"
         android:layout_toRightOf="@id/picture_root2"
         android:layout_width="wrap_content"
@@ -68,7 +73,9 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:paddingTop="26dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
     <TextView
         android:text=""
         android:layout_width="wrap_content"
@@ -82,7 +89,7 @@
         android:paddingTop="26dp"/>
 
     <TextView
-        android:text="3"
+        android:text="@string/fragmentPictureDefaultNumber2"
         android:id="@+id/picture_y"
         android:layout_toRightOf="@id/picture_into"
         android:layout_width="wrap_content"
@@ -91,10 +98,11 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:paddingTop="26dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
 
     <TextView
-        android:text="more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/picture_lable2"
@@ -103,7 +111,8 @@
         android:textColor="#DA3A3A"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:paddingTop="2dp"/>
+        android:paddingTop="2dp"
+        android:text="@string/fragmentPictureText4" />
 
 
     <LinearLayout
@@ -117,7 +126,7 @@
     </LinearLayout>
 
     <TextView
-        android:text="How many squares are there now?"
+        android:text="@string/fragmentPictureText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/picture_question"
@@ -135,7 +144,7 @@
         android:layout_below="@id/picture_question"
         android:layout_centerHorizontal="true"
         android:paddingTop="16dp"
-        android:hint="ANSWER"
+        android:hint="@string/fragmentPictureEditText"
         android:id="@+id/picture_answer"
         android:textColorHint="#913AC9"
         android:textColor="#913AC9"/>
@@ -148,7 +157,7 @@
         android:textColor="#FFFFFF"
         android:inputType="number"
         android:onClick="onClick"
-        android:text="SUBMIT"
+        android:text="@string/fragmentPictureSubmitButton"
         android:textSize="20sp"
         android:layout_margin="26dp"
         android:background="#224AC9"

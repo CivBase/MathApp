@@ -5,7 +5,7 @@
     tools:context="com.toomanycooksapp.mathapp.lessons.DefinitionFragment">
 
     <TextView
-        android:text="To "
+        android:text="@string/fragmentDefinitionToText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/define_to"
@@ -13,11 +13,12 @@
         android:textSize="35sp"
         android:textStyle="bold"
         android:paddingLeft="32dp"
-        android:paddingTop="32dp"/>
+        android:paddingTop="32dp"
+        android:paddingRight="5dp" />
 
 
     <TextView
-        android:text="ADD"
+        android:text="@string/fragmentDefinitionAddText"
         android:id="@+id/define_subject"
         android:layout_toRightOf="@id/define_to"
         android:layout_width="wrap_content"
@@ -25,9 +26,11 @@
         android:textSize="35sp"
         android:textStyle="bold"
         android:paddingTop="32dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
     <TextView
-        android:text=" means to:"
+        android:text="@string/fragmentDefinitionMeansToText"
         android:id="@+id/define_means"
         android:layout_toRightOf="@id/define_subject"
         android:layout_width="wrap_content"
@@ -35,7 +38,9 @@
         android:textSize="35sp"
         android:textStyle="bold"
         android:paddingTop="32dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,12 +50,11 @@
         android:padding="15dp"
         android:textColor="#FFFFFF"
         android:background="#224AC9"
-        android:text="Increase"
         android:onClick="onClick"
         android:textSize="20sp"
         android:layout_margin="32dp"
 
-        />
+        android:text="@string/fragmentDefinitionIncreaseButton" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +64,7 @@
         android:padding="15dp"
         android:onClick="onClick"
         android:textColor="#FFFFFF"
-        android:text="Take Away"
+        android:text="@string/fragmentDefinitionTakeAwayButton"
         android:textSize="20sp"
         android:layout_margin="32dp"
         android:background="#224AC9"
@@ -73,7 +77,7 @@
         android:padding="15dp"
         android:textColor="#FFFFFF"
         android:onClick="onClick"
-        android:text="SEPARATE"
+        android:text="@string/fragmentDefinitionSeparateButton"
         android:textSize="20sp"
         android:layout_margin="32dp"
         android:background="#224AC9"
@@ -87,7 +91,7 @@
         android:padding="15dp"
         android:onClick="onClick"
         android:textColor="#FFFFFF"
-        android:text="Repeat"
+        android:text="@string/fragmentDefinitionRepeatButton"
         android:textSize="20sp"
         android:layout_margin="32dp"
         android:background="#224AC9"

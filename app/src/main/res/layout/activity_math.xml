@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:textColor="#DA3A3A"
         android:id="@+id/lessonText"
         android:layout_alignParentTop="true"
@@ -18,12 +17,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="@string/activityMathDefaultText" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lesson"
+        android:text="@string/activityMathLessonButton"
         android:id="@+id/lessonButton"
         android:textColor="#FFFFFF"
         android:background="#224AC9"
@@ -37,7 +37,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game"
+        android:text="@string/activityMathGameButton"
         android:id="@+id/gameButton"
         android:layout_marginTop="61dp"
         android:layout_below="@+id/lessonButton"
@@ -51,7 +51,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Flash Cards"
+        android:text="@string/activityMathFlashCardsButton"
         android:id="@+id/fcButton"
         android:layout_marginTop="61dp"
         android:layout_below="@+id/gameButton"
@@ -65,7 +65,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quiz"
+        android:text="@string/activityMathQuizButton"
         android:id="@+id/quizButton"
         android:layout_marginTop="61dp"
         android:layout_below="@+id/fcButton"

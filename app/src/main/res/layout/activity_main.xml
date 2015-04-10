@@ -9,7 +9,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Addition"
         android:id="@+id/additionButton"
         android:layout_alignParentTop="true"
         android:layout_marginTop="88dp"
@@ -18,12 +17,12 @@
         android:layout_alignParentEnd="true"
         android:background="#224AC9"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="@string/activityMainAdditionButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Subtraction"
         android:id="@+id/subtractionButton"
         android:background="#224AC9"
         android:textColor="#FFFFFF"
@@ -32,12 +31,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/additionButton"
-        android:layout_alignEnd="@+id/additionButton" />
+        android:layout_alignEnd="@+id/additionButton"
+        android:text="@string/activityMainSubtractionButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Multiplication"
         android:id="@+id/multiplicationButton"
         android:layout_below="@+id/subtractionButton"
         android:background="#224AC9"
@@ -46,12 +45,12 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="61dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="@string/activityMainMultiplicationButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Division"
         android:id="@+id/divisionButton"
         android:layout_below="@+id/multiplicationButton"
         android:layout_marginTop="61dp"
@@ -60,5 +59,8 @@
         android:background="#224AC9"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/multiplicationButton"
-        android:layout_alignEnd="@+id/multiplicationButton" />
+        android:layout_alignEnd="@+id/multiplicationButton"
+        android:layout_alignParentEnd="true"
+        android:text="@string/activityMainDivisionButton" />
+
 </RelativeLayout>
