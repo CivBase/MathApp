@@ -59,5 +59,6 @@
     <string name="fragmentProblemsCheckBox3">1 + 2 + 3 + 4</string>
     <string name="fragmentProblemsCheckBox4">6 + 6</string>
     <string name="fragmentProblemsSubmitButton">SUBMIT</string>
+    <string name="activityMainDifficultyLabel">Difficulty:</string>
 
 </resources>

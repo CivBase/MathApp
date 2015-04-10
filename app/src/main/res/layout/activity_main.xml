@@ -6,61 +6,79 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/additionButton"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="88dp"
-        android:textColor="#FFFFFF"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="#224AC9"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/activityMainAdditionButton" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:showDividers="middle|beginning">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/subtractionButton"
-        android:background="#224AC9"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="61dp"
-        android:layout_below="@+id/additionButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/additionButton"
-        android:layout_alignEnd="@+id/additionButton"
-        android:text="@string/activityMainSubtractionButton" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/multiplicationButton"
-        android:layout_below="@+id/subtractionButton"
-        android:background="#224AC9"
-        android:layout_alignParentRight="true"
-        android:textColor="#FFFFFF"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="61dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/activityMainMultiplicationButton" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/activityMainDifficultyLabel"
+                android:id="@+id/textView2"
+                android:paddingRight="10dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/divisionButton"
-        android:layout_below="@+id/multiplicationButton"
-        android:layout_marginTop="61dp"
-        android:textColor="#FFFFFF"
-        android:layout_alignParentLeft="true"
-        android:background="#224AC9"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/multiplicationButton"
-        android:layout_alignEnd="@+id/multiplicationButton"
-        android:layout_alignParentEnd="true"
-        android:text="@string/activityMainDivisionButton" />
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner"
+                android:spinnerMode="dialog"
+                android:textAlignment="center"
+                android:entries="@array/activityMainDifficultySpinnerItems" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/additionButton"
+            android:layout_marginTop="5dp"
+            android:textColor="#FFFFFF"
+            android:background="#224AC9"
+            android:text="@string/activityMainAdditionButton"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/subtractionButton"
+            android:background="#224AC9"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"
+            android:text="@string/activityMainSubtractionButton"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/multiplicationButton"
+            android:background="#224AC9"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"
+            android:text="@string/activityMainMultiplicationButton"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/divisionButton"
+            android:layout_marginTop="5dp"
+            android:textColor="#FFFFFF"
+            android:background="#224AC9"
+            android:text="@string/activityMainDivisionButton"
+            android:layout_weight="1"
+            android:singleLine="false"
+            android:layout_marginBottom="5dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
