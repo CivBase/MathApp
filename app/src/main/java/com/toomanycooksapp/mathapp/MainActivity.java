@@ -4,14 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Spinner;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    Spinner difficultySpinner = null;
     Button additionButton = null;
     Button subtractionButton = null;
     Button multiplicationButton = null;
@@ -26,11 +30,29 @@ public class MainActivity extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        difficultySpinner = (Spinner) findViewById(R.id.difficultySpinner);
         additionButton = (Button) findViewById(R.id.additionButton);
         subtractionButton = (Button) findViewById(R.id.subtractionButton);
         multiplicationButton = (Button) findViewById(R.id.multiplicationButton);
         divisionButton = (Button) findViewById(R.id.divisionButton);
 
+        difficultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if (position == 0) {
+                    NumberGenerator.setLimit(11);
+                } else if (position == 1) {
+                    NumberGenerator.setLimit(100);
+                } else if (position == 2) {
+                    NumberGenerator.setLimit(1000);
+                }
+                Log.d("Msg", "Random value: " + NumberGenerator.generateNumber());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {}
+
+        });
         additionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
