@@ -59,8 +59,7 @@ public class MathActivity extends ActionBarActivity {
                 lessonText.setText("Subtraction");
                 gameButton.setOnClickListener(new View.OnClickListener(){
                     @Override
-                    public void onClick(View v) {
-                        startSubtractionGame();
+                    public void onClick(View v) { startSubtractionGame();
                     }
                 });
                 break;

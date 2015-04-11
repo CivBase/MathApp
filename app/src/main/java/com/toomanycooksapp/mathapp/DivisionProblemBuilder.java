@@ -19,8 +19,11 @@ public class DivisionProblemBuilder implements ProblemBuilder
     {
         Problem p = new Problem(Problem.FLASH_CARD);
 
-        int ans = rand.nextInt(10) + 1;
-        int op2 = rand.nextInt(10) + 1;
+        int ans = NumberGenerator.generateNumber();
+        int op2 = NumberGenerator.generateNumber();
+        while (op2 == 0) {
+            op2 = NumberGenerator.generateNumber();
+        }
         int op1 = ans * op2;
 
         p.setQuestion(buildQuestionString(op1,op2));
@@ -35,8 +38,11 @@ public class DivisionProblemBuilder implements ProblemBuilder
     {
         Problem p = new Problem(Problem.QUIZ);
 
-        int ans = rand.nextInt(10) + 1;
-        int op2 = rand.nextInt(10) + 1;
+        int ans = NumberGenerator.generateNumber();
+        int op2 = NumberGenerator.generateNumber();
+        while (op2 == 0) {
+            op2 = NumberGenerator.generateNumber();
+        }
         int op1 = ans * op2;
 
         p.setQuestion(buildQuestionString(op1,op2));
@@ -72,7 +78,7 @@ public class DivisionProblemBuilder implements ProblemBuilder
 
         while(output == correctAnswer)
         {
-            output = rand.nextInt(10) + 1;
+            output = NumberGenerator.generateNumber();
         }
 
         return "" + output;

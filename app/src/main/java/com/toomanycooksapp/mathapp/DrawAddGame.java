@@ -96,9 +96,6 @@ public class DrawAddGame extends View{
             }
 
             squareSize = canvas.getWidth() / 9;
-            Log.d("check nulls", "Square Size: " + squareSize);
-            Log.d("check nulls", "Canvas Width: " + canvas.getWidth());
-            Log.d("check nulls", "Canvas Height: " + canvas.getHeight());
             int x = squareSize;
             int y = canvas.getHeight() - (9 * squareSize);
             int xEnd = canvas.getWidth() - squareSize - 1;
@@ -106,7 +103,6 @@ public class DrawAddGame extends View{
 
             Rect[] squares = new Rect[49];
             for (int i = 0; i < squares.length; i++) {
-                //            Log.d("Square", "Square " + i + ": " + fills[i]);
                 squares[i] = new Rect();
                 squares[i].set(x, y, (x + squareSize), (y + squareSize));
 
@@ -261,27 +257,36 @@ public class DrawAddGame extends View{
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d("Touched: ", "Has been touched");
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("Up Touch: ", "Up touched");
                 float tapSpace = event.getX();
-                for(int i = 1; i < 9; i ++){
-                    if((tapSpace > (i * squareSize) && tapSpace <= ((i + 1) * squareSize)) || (i == 1 && tapSpace <= squareSize) || (i == 8 && tapSpace >= (squareSize * 8))) {
-                        if(fills[i - 1] != 0) {
-                            gameOver = true;
-                        }
-                        else {
-                            fills[i - 1] = numToDrop;
-                        }
-                    }
+                int idx;
+                if (tapSpace < 2 * squareSize) {
+                    idx = 0;
+                } else if (tapSpace < 3 * squareSize) {
+                    idx = 1;
+                } else if (tapSpace < 4 * squareSize) {
+                    idx = 2;
+                } else if (tapSpace < 5 * squareSize) {
+                    idx = 3;
+                } else if (tapSpace < 6 * squareSize) {
+                    idx = 4;
+                } else if (tapSpace < 7 * squareSize) {
+                    idx = 5;
+                } else {
+                    idx = 6;
+                }
+
+                if(fills[idx] != 0) {
+                    gameOver = true;
+                }
+                else {
+                    fills[idx] = numToDrop;
                 }
                 invalidate();
                 return true;
             default:
-                Log.d("Is here at least: ", "here");
                 return super.onTouchEvent(event);
-
         }
     }
 }
