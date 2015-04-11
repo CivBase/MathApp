@@ -147,7 +147,8 @@
         android:hint="@string/fragmentPictureEditText"
         android:id="@+id/picture_answer"
         android:textColorHint="#913AC9"
-        android:textColor="#913AC9"/>
+        android:textColor="#913AC9"
+        android:inputType="number" />
 
     <Button
         android:layout_width="wrap_content"
