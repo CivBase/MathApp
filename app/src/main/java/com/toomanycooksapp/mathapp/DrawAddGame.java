@@ -134,9 +134,6 @@ public class DrawAddGame extends View{
             // Draw goalqueue
             Rect queue[] = new Rect[3];
 
-
-
-
             // If number has empty space below it, moves the number down and redraws the canvas
             for (int i = 41; i >= 0; i--) {
                 if (fills[i + 7] == 0 && fills[i] != 0) {
@@ -285,6 +282,7 @@ public class DrawAddGame extends View{
                 }
                 invalidate();
                 return true;
+
             default:
                 return super.onTouchEvent(event);
         }
