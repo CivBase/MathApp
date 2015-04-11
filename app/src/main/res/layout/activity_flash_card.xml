@@ -46,7 +46,8 @@
                 android:layout_weight="0.5"
                 android:background="#224AC9"
                 android:textColor="#FFFFFF"
-                android:id="@+id/nextButton" />
+                android:id="@+id/nextButton"
+                android:text="@string/activityFlashCardNextButton" />
         </LinearLayout>
     </LinearLayout>
 

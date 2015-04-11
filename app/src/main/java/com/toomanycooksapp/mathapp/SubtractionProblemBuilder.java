@@ -19,16 +19,16 @@ public class SubtractionProblemBuilder implements ProblemBuilder
     {
         Problem p = new Problem(Problem.FLASH_CARD);
 
-        int op1 = rand.nextInt(20) + 1;
-        int op2 = rand.nextInt(11);
+        int op1 = NumberGenerator.generateNumber();
+        int op2 = NumberGenerator.generateNumber();
 
-        while(op2 > op1)
-        {
-            op2 = rand.nextInt(11);
+        if (op1 >= op2) {
+            p.setQuestion(buildQuestionString(op1,op2));
+            p.setAnswer(0,buildCorrectAnswer(op1,op2));
+        } else {
+            p.setQuestion(buildQuestionString(op2,op1));
+            p.setAnswer(0,buildCorrectAnswer(op2,op1));
         }
-
-        p.setQuestion(buildQuestionString(op1,op2));
-        p.setAnswer(0,buildCorrectAnswer(op1,op2));
         p.setCorrectIndex(0);
 
         return p;
@@ -39,24 +39,30 @@ public class SubtractionProblemBuilder implements ProblemBuilder
     {
         Problem p = new Problem(Problem.QUIZ);
 
-        int op1 = rand.nextInt(20) + 1;
-        int op2 = rand.nextInt(11);
-
-        while(op2 > op1)
-        {
-            op2 = rand.nextInt(11);
-        }
-
-        p.setQuestion(buildQuestionString(op1,op2));
+        int op1 = NumberGenerator.generateNumber();
+        int op2 = NumberGenerator.generateNumber();
 
         int correctIndex = rand.nextInt(4);
         p.setCorrectIndex(correctIndex);
-        p.setAnswer(correctIndex,buildCorrectAnswer(op1,op2));
-        for(int i = 0; i < 4; i++)
-        {
-            if(i != correctIndex)
+        if (op1 >= op2) {
+            p.setQuestion(buildQuestionString(op1,op2));
+            p.setAnswer(correctIndex,buildCorrectAnswer(op1,op2));
+            for(int i = 0; i < 4; i++)
             {
-                p.setAnswer(i,buildIncorrectAnswer(op1,op2));
+                if(i != correctIndex)
+                {
+                    p.setAnswer(i,buildIncorrectAnswer(op1,op2));
+                }
+            }
+        } else {
+            p.setQuestion(buildQuestionString(op2,op1));
+            p.setAnswer(correctIndex,buildCorrectAnswer(op2,op1));
+            for(int i = 0; i < 4; i++)
+            {
+                if(i != correctIndex)
+                {
+                    p.setAnswer(i,buildIncorrectAnswer(op2,op1));
+                }
             }
         }
 
@@ -80,7 +86,7 @@ public class SubtractionProblemBuilder implements ProblemBuilder
 
         while(output == correctAnswer)
         {
-            output = rand.nextInt(21);
+            output = NumberGenerator.generateNumber();
         }
 
         return "" + output;

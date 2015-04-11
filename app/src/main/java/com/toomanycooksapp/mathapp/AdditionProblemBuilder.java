@@ -19,8 +19,8 @@ public class AdditionProblemBuilder implements ProblemBuilder
     {
         Problem p = new Problem(Problem.FLASH_CARD);
 
-        int op1 = rand.nextInt(10);
-        int op2 = rand.nextInt(10);
+        int op1 = NumberGenerator.generateNumber();
+        int op2 = NumberGenerator.generateNumber();
 
         p.setQuestion(buildQuestionString(op1,op2));
         p.setAnswer(0,buildCorrectAnswer(op1,op2));
@@ -34,8 +34,8 @@ public class AdditionProblemBuilder implements ProblemBuilder
     {
         Problem p = new Problem(Problem.QUIZ);
 
-        int op1 = rand.nextInt(10);
-        int op2 = rand.nextInt(10);
+        int op1 = NumberGenerator.generateNumber();
+        int op2 = NumberGenerator.generateNumber();
 
         p.setQuestion(buildQuestionString(op1,op2));
 
@@ -70,7 +70,7 @@ public class AdditionProblemBuilder implements ProblemBuilder
 
         while(output == correctAnswer)
         {
-            output = rand.nextInt(19);
+            output = NumberGenerator.generateNumber();
         }
 
         return "" + output;
