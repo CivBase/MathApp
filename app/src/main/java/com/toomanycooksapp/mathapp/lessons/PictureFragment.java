@@ -77,7 +77,11 @@ public class PictureFragment extends Fragment {
         int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
-        ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("more squares");
+        if (y == 1) {
+            ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("more square");
+        } else {
+            ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("more squares");
+        }
         for (int i = 0; i < x; i++) {
             ImageView square = new ImageView(getActivity());
             square.setPadding(5, 5, 5, 5);
@@ -105,7 +109,11 @@ public class PictureFragment extends Fragment {
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
         ((TextView) vthis.findViewById(R.id.picture_subject)).setText(DefinitionFragment.DEFINITIONS[subject] + " ");
-        ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("squares");
+        if (y == 1) {
+            ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("square");
+        } else {
+            ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("squares");
+        }
         ((TextView) vthis.findViewById(R.id.picture_question)).setText("How many squares are left?");
         answer = x - y;
         for (int i = 0; i < x; i++) {
