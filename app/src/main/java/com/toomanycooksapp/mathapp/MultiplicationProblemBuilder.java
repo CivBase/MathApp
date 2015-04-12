@@ -60,7 +60,7 @@ public class MultiplicationProblemBuilder implements ProblemBuilder {
         int output = correctAnswer;
 
         while (output == correctAnswer) {
-            output = NumberGenerator.generateNumber();
+            output = NumberGenerator.generateNumber() * NumberGenerator.generateNumber();
         }
 
         return "" + output;
