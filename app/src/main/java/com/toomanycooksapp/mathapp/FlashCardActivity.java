@@ -1,14 +1,15 @@
 package com.toomanycooksapp.mathapp;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.content.Intent;
+
 import java.util.ArrayList;
 
 public class FlashCardActivity extends ActionBarActivity {
@@ -36,8 +37,7 @@ public class FlashCardActivity extends ActionBarActivity {
 
         Intent calledBy = getIntent();
         lesson = calledBy.getExtras().getInt("lesson");
-        switch(lesson)
-        {
+        switch (lesson) {
             //0 -> Addition
             case 0:
                 pb = new AdditionProblemBuilder();
@@ -110,41 +110,31 @@ public class FlashCardActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void flipButton()
-    {
-        if(questionDisplayed)
-        {
+    public void flipButton() {
+        if (questionDisplayed) {
             flashCardView.setText(fc.get(currentIndex).answerView());
             questionDisplayed = false;
-        }
-        else
-        {
+        } else {
             flashCardView.setText(fc.get(currentIndex).questionView());
             questionDisplayed = true;
         }
     }
 
-    public void backButton()
-    {
+    public void backButton() {
         //TODO Make this go to previous card if one exists
-        if(currentIndex == 0)
-        {
+        if (currentIndex == 0) {
             //TODO Pop up that alerts the user that there are no more previous cards
             return;
-        }
-        else
-        {
+        } else {
             currentIndex--;
             flashCardView.setText(fc.get(currentIndex).questionView());
             questionDisplayed = true;
         }
     }
 
-    public void nextButton()
-    {
+    public void nextButton() {
         //TODO Make this go to the next card in the array, creating one if necessary
-        if(currentIndex == fc.size() - 1)
-        {
+        if (currentIndex == fc.size() - 1) {
             fc.add(new FlashCard(pb.buildFlashCardProblem()));
         }
         currentIndex++;

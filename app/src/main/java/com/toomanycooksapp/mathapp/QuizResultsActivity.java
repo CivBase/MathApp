@@ -1,14 +1,14 @@
 package com.toomanycooksapp.mathapp;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class QuizResultsActivity extends ActionBarActivity {
@@ -27,8 +27,7 @@ public class QuizResultsActivity extends ActionBarActivity {
 
         Intent calledBy = getIntent();
         lesson = calledBy.getExtras().getInt("lesson");
-        switch(lesson)
-        {
+        switch (lesson) {
             //0 -> Addition
             case 0:
                 lessonName = "addition";
@@ -84,8 +83,7 @@ public class QuizResultsActivity extends ActionBarActivity {
     }
 
     //Returns to MainActivity, deleting itself on exit
-    public void goToHomeScreen()
-    {
+    public void goToHomeScreen() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

@@ -17,7 +17,7 @@ import java.util.Stack;
  * Created by david on 2/18/15.
  * Creates view for the addition game
  */
-public class DrawAddGame extends View{
+public class DrawAddGame extends View {
 
     private int[] fills = new int[49];
     private boolean changed = false;
@@ -51,18 +51,17 @@ public class DrawAddGame extends View{
 
     private void initDropQueue() {
         Random r = new Random();
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             dropQueue[i] = r.nextInt(9 - 1 + 1) + 1;
         }
     }
-
 
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if(newGame) {
+        if (newGame) {
             initDropQueue();
             newGame = false;
         }
@@ -81,13 +80,12 @@ public class DrawAddGame extends View{
         fillGreenText.setStyle(Paint.Style.FILL);
         fillGreenText.setTextSize(100);
 
-        if(gameOver) {
+        if (gameOver) {
             canvas.drawText("GAMEOVER", (canvas.getWidth() / 4), (canvas.getHeight() / 2), fillBlueText);
             canvas.drawText("SCORE", (canvas.getWidth() / 4) + 100, (canvas.getHeight() / 2) + 150, fillBlueText);
             canvas.drawText("_______", (canvas.getWidth() / 4) + 100, (canvas.getHeight() / 2) + 150, fillBlueText);
-            canvas.drawText(String.valueOf(score),(canvas.getWidth() / 2) - 50, (canvas.getHeight() / 2) + 250, fillBlueText);
-        }
-        else {
+            canvas.drawText(String.valueOf(score), (canvas.getWidth() / 2) - 50, (canvas.getHeight() / 2) + 250, fillBlueText);
+        } else {
             isUpdating = false;
 
             if (!changed) {
@@ -181,26 +179,26 @@ public class DrawAddGame extends View{
                 canvas.drawText(String.valueOf(numToDrop), ((4 * squareSize) + (squareSize / 4)), ((canvas.getHeight() / 4) + squareSize - 20), fillBlueText);
 
                 int startPos = 0;
-                for(int i = 0; i < 48; i++) {
+                for (int i = 0; i < 48; i++) {
                     Stack<Integer> toRemove = new Stack();
                     int curPos = i;
                     int curTotal = 0;
-                    if(fills[i] != 0) {
+                    if (fills[i] != 0) {
                         while (curPos != startPos * 7 && fills[curPos] != 0) {
-                            if(i != 0 && i != 7 && i != 14 && i != 21 && i != 28 && i != 35 && i != 42) {
-                                if(fills[i - 1] != 0) {
+                            if (i != 0 && i != 7 && i != 14 && i != 21 && i != 28 && i != 35 && i != 42) {
+                                if (fills[i - 1] != 0) {
                                     break;
                                 }
                             }
                             curTotal += fills[curPos];
                             toRemove.push(curPos);
                             curPos++;
-                            if(curPos > 48) {
+                            if (curPos > 48) {
                                 break;
                             }
                         }
-                        if(curTotal == goal) {
-                            while(!toRemove.empty()){
+                        if (curTotal == goal) {
+                            while (!toRemove.empty()) {
                                 fills[toRemove.pop()] = 0;
                                 score += 10;
                             }
@@ -215,7 +213,7 @@ public class DrawAddGame extends View{
                             }, 300);
                             break;
                         }
-                        while(!toRemove.empty()){
+                        while (!toRemove.empty()) {
                             toRemove.pop();
                         }
                         curPos = i;
@@ -225,12 +223,12 @@ public class DrawAddGame extends View{
                             toRemove.push(curPos);
 
                             curPos += 7;
-                            if(curPos > 48) {
+                            if (curPos > 48) {
                                 break;
                             }
                         }
-                        if(curTotal == goal) {
-                            while(!toRemove.empty()){
+                        if (curTotal == goal) {
+                            while (!toRemove.empty()) {
                                 fills[toRemove.pop()] = 0;
                                 score += 10;
                             }
@@ -274,10 +272,9 @@ public class DrawAddGame extends View{
                     idx = 6;
                 }
 
-                if(fills[idx] != 0) {
+                if (fills[idx] != 0) {
                     gameOver = true;
-                }
-                else {
+                } else {
                     fills[idx] = numToDrop;
                 }
                 invalidate();

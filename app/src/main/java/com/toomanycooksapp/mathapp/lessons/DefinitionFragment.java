@@ -16,6 +16,7 @@ public class DefinitionFragment extends Fragment {
 
     public DefinitionFragment() {
     }
+
     int subject;
     int pass;
 
@@ -29,7 +30,6 @@ public class DefinitionFragment extends Fragment {
         subject = b.getInt("subject");
         pass = b.getInt("pass");
         ((TextView) view.findViewById(R.id.define_subject)).setText(LessonsActivity.SUBJECTS[subject]);
-
 
 
         return view;

@@ -48,7 +48,7 @@ public class MathActivity extends ActionBarActivity {
         switch (lesson) {
             case 0:
                 lessonText.setText("Addition");
-                gameButton.setOnClickListener(new View.OnClickListener(){
+                gameButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         startAddGame();
@@ -57,9 +57,10 @@ public class MathActivity extends ActionBarActivity {
                 break;
             case 1:
                 lessonText.setText("Subtraction");
-                gameButton.setOnClickListener(new View.OnClickListener(){
+                gameButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) { startSubtractionGame();
+                    public void onClick(View v) {
+                        startSubtractionGame();
                     }
                 });
                 break;
@@ -73,19 +74,19 @@ public class MathActivity extends ActionBarActivity {
                 break;
         }
 
-        fcButton.setOnClickListener(new View.OnClickListener(){
+        fcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startFlashCard();
             }
         });
-        quizButton.setOnClickListener(new View.OnClickListener(){
+        quizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startQuiz();
             }
         });
-        lessonButton.setOnClickListener(new View.OnClickListener(){
+        lessonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startLesson();
@@ -93,14 +94,14 @@ public class MathActivity extends ActionBarActivity {
         });
 
         lessonButton = (Button) findViewById(R.id.lessonButton);
-        gameButton  = (Button) findViewById(R.id.gameButton);
+        gameButton = (Button) findViewById(R.id.gameButton);
         fcButton = (Button) findViewById(R.id.fcButton);
         quizButton = (Button) findViewById(R.id.quizButton);
     }
 
     private void startLesson() {
         Intent intent = new Intent(this, LessonsActivity.class);
-        intent.putExtra("subject",lesson);
+        intent.putExtra("subject", lesson);
         startActivity(intent);
     }
 
@@ -140,19 +141,17 @@ public class MathActivity extends ActionBarActivity {
     }
 
     // Creates intent and starts FlashCardActivity
-    private void startFlashCard()
-    {
+    private void startFlashCard() {
         Intent intent = new Intent(this, FlashCardActivity.class);
-        intent.putExtra("lesson",lesson);
+        intent.putExtra("lesson", lesson);
         startActivity(intent);
     }
 
     // Creates intent and starts QuizQuestionActivity
-    private void startQuiz()
-    {
+    private void startQuiz() {
         QuizSingleton.getNewInstance();
         Intent intent = new Intent(this, QuizQuestionActivity.class);
-        intent.putExtra("lesson",lesson);
+        intent.putExtra("lesson", lesson);
         startActivity(intent);
     }
 }

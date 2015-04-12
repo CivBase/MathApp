@@ -50,7 +50,8 @@ public class MainActivity extends ActionBarActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parentView) {}
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
 
         });
         additionButton.setOnClickListener(new View.OnClickListener() {

@@ -2,17 +2,17 @@ package com.toomanycooksapp.mathapp;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Button;
+import android.widget.TextView;
 
-import static android.app.AlertDialog.*;
+import static android.app.AlertDialog.Builder;
 
 
 public class QuizQuestionActivity extends ActionBarActivity {
@@ -32,8 +32,7 @@ public class QuizQuestionActivity extends ActionBarActivity {
 
         Intent calledBy = getIntent();
         lesson = calledBy.getExtras().getInt("lesson");
-        switch(lesson)
-        {
+        switch (lesson) {
             //0 -> Addition
             case 0:
                 pb = new AdditionProblemBuilder();
@@ -66,16 +65,14 @@ public class QuizQuestionActivity extends ActionBarActivity {
         answer[2] = (Button) findViewById(R.id.answer2);
         answer[3] = (Button) findViewById(R.id.answer3);
 
-        for(int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < 4; i++) {
             answer[i].setText(qq.answerView(i));
             answer[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //TODO Pop up to report correctness
                     int buttonIndex = -1;
-                    switch(v.getId())
-                    {
+                    switch (v.getId()) {
                         case R.id.answer0:
                             buttonIndex = 0;
                             break;
@@ -89,43 +86,34 @@ public class QuizQuestionActivity extends ActionBarActivity {
                             buttonIndex = 3;
                             break;
                     }
-                    if(qq.isTrue(buttonIndex))
-                    {
+                    if (qq.isTrue(buttonIndex)) {
                         quiz.answeredQuestion(true);
 
                         Builder alert = new Builder(v.getContext());
                         alert.setMessage("Correct!");
-                        alert.setPositiveButton("Continue",new DialogInterface.OnClickListener() {
+                        alert.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                if(quiz.getCurrentQuestion() == quiz.getNumberOfQuestions())
-                                {
+                                if (quiz.getCurrentQuestion() == quiz.getNumberOfQuestions()) {
                                     goToQuizResults();
-                                }
-                                else
-                                {
+                                } else {
                                     goToNextQuestion();
                                 }
                             }
                         });
                         AlertDialog popup = alert.create();
                         popup.show();
-                    }
-                    else
-                    {
+                    } else {
                         quiz.answeredQuestion(false);
 
                         Builder alert = new Builder(v.getContext());
                         alert.setMessage("Incorrect!");
-                        alert.setPositiveButton("Continue",new DialogInterface.OnClickListener() {
+                        alert.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                if(quiz.getCurrentQuestion() == quiz.getNumberOfQuestions())
-                                {
+                                if (quiz.getCurrentQuestion() == quiz.getNumberOfQuestions()) {
                                     goToQuizResults();
-                                }
-                                else
-                                {
+                                } else {
                                     goToNextQuestion();
                                 }
                             }
@@ -162,19 +150,17 @@ public class QuizQuestionActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void goToQuizResults()
-    {
+    public void goToQuizResults() {
         Intent intent = new Intent(this, QuizResultsActivity.class);
-        intent.putExtra("lesson",lesson);
+        intent.putExtra("lesson", lesson);
         startActivity(intent);
         finish();
     }
 
     //Makes intent for next question and goes to it, deleting itself on exit
-    public void goToNextQuestion()
-    {
+    public void goToNextQuestion() {
         Intent intent = new Intent(this, QuizQuestionActivity.class);
-        intent.putExtra("lesson",lesson);
+        intent.putExtra("lesson", lesson);
         startActivity(intent);
         finish();
     }

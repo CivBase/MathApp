@@ -5,18 +5,13 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.toomanycooksapp.mathapp.MainActivity;
-import com.toomanycooksapp.mathapp.MathActivity;
-import com.toomanycooksapp.mathapp.Problem;
 import com.toomanycooksapp.mathapp.R;
 
 public class LessonsActivity extends ActionBarActivity implements View.OnClickListener {
@@ -81,7 +76,7 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
     }
 
     private void onProblemClicks(View v) {
-        if(v.getId() == R.id.problem_submit) {
+        if (v.getId() == R.id.problem_submit) {
             boolean passed = true;
             for (int i = 0; i < 4; i++) {
                 if (ProblemFragment.ANSWERKEYS[i] != ProblemFragment.ANSWERSGIVEN[i]) {
@@ -92,8 +87,8 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
             if (passed) pass++;
             if (pass != 5) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
-                alert.setMessage(passed?"Well done! Get " + (5-pass) +" more right and you finish the lesson!"
-                        :"Almost! You can do this! Get "+ (5-pass) +" more right and you finish the lesson!");
+                alert.setMessage(passed ? "Well done! Get " + (5 - pass) + " more right and you finish the lesson!"
+                        : "Almost! You can do this! Get " + (5 - pass) + " more right and you finish the lesson!");
                 alert.setTitle(passed ? "Great Job!" : "Not Quite");
                 alert.setPositiveButton(passed ? "Next Question!" : "Try Again", new DialogInterface.OnClickListener() {
                     @Override
@@ -106,11 +101,10 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
                 popup.show();
 
 
-
                 return;
             } else {
                 AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
-                alert.setMessage("Well done! You passed this lesson! " );
+                alert.setMessage("Well done! You passed this lesson! ");
                 alert.setTitle(passed ? "Great Job!" : "Not Quite");
                 alert.setPositiveButton("Onward to next lesson!", new DialogInterface.OnClickListener() {
                     @Override
@@ -130,7 +124,6 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
 
 
     }
-
 
 
     private void onPictureClicks(View v) {
