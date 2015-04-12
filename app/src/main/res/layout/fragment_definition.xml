@@ -1,100 +1,113 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context="com.toomanycooksapp.mathapp.lessons.DefinitionFragment">
-
-    <TextView
-        android:text="@string/fragmentDefinitionToText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/define_to"
-        android:textColor="#DA3A3A"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:paddingLeft="32dp"
-        android:paddingTop="32dp"
-        android:paddingRight="5dp" />
+    tools:context="com.toomanycooksapp.mathapp.lessons.DefinitionFragment"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
 
-    <TextView
-        android:text="@string/fragmentDefinitionAddText"
-        android:id="@+id/define_subject"
-        android:layout_toRightOf="@id/define_to"
-        android:layout_width="wrap_content"
-        android:textColor="#913AC9"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:paddingTop="32dp"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" />
-    <TextView
-        android:text="@string/fragmentDefinitionMeansToText"
-        android:id="@+id/define_means"
-        android:layout_toRightOf="@id/define_subject"
-        android:layout_width="wrap_content"
-        android:textColor="#DA3A3A"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:paddingTop="32dp"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentStart="false"
+        android:showDividers="middle|beginning">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/define_increase"
-        android:layout_below="@id/define_means"
-        android:padding="15dp"
-        android:textColor="#FFFFFF"
-        android:background="#224AC9"
-        android:onClick="onClick"
-        android:textSize="20sp"
-        android:layout_margin="32dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-        android:text="@string/fragmentDefinitionIncreaseButton" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/define_take"
-        android:layout_toRightOf="@id/define_increase"
-        android:layout_below="@id/define_means"
-        android:padding="15dp"
-        android:onClick="onClick"
-        android:textColor="#FFFFFF"
-        android:text="@string/fragmentDefinitionTakeAwayButton"
-        android:textSize="20sp"
-        android:layout_margin="32dp"
-        android:background="#224AC9"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/define_seperate"
-        android:layout_below="@id/define_increase"
-        android:padding="15dp"
-        android:textColor="#FFFFFF"
-        android:onClick="onClick"
-        android:text="@string/fragmentDefinitionSeparateButton"
-        android:textSize="20sp"
-        android:layout_margin="32dp"
-        android:background="#224AC9"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/define_repeat"
-        android:layout_toRightOf="@id/define_increase"
-        android:layout_below="@id/define_increase"
-        android:padding="15dp"
-        android:onClick="onClick"
-        android:textColor="#FFFFFF"
-        android:text="@string/fragmentDefinitionRepeatButton"
-        android:textSize="20sp"
-        android:layout_margin="32dp"
-        android:background="#224AC9"
-        />
+            <TextView
+                android:text="@string/fragmentDefinitionToText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/define_to"
+                android:textColor="#DA3A3A"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
+
+            <TextView
+                android:text="@string/fragmentDefinitionAddText"
+                android:id="@+id/define_subject"
+                android:layout_width="wrap_content"
+                android:textColor="#913AC9"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
+        </LinearLayout>
+
+        <TextView
+            android:text="@string/fragmentDefinitionMeansToText"
+            android:id="@+id/define_means"
+            android:layout_width="wrap_content"
+            android:textColor="#DA3A3A"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/define_repeat"
+            android:onClick="onClick"
+            android:textColor="#FFFFFF"
+            android:text="@string/fragmentDefinitionRepeatButton"
+            android:textSize="20sp"
+            android:background="#224AC9"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/define_seperate"
+            android:textColor="#FFFFFF"
+            android:onClick="onClick"
+            android:text="@string/fragmentDefinitionSeparateButton"
+            android:textSize="20sp"
+            android:background="#224AC9"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/define_take"
+            android:onClick="onClick"
+            android:textColor="#FFFFFF"
+            android:text="@string/fragmentDefinitionTakeAwayButton"
+            android:textSize="20sp"
+            android:background="#224AC9"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/define_increase"
+            android:textColor="#FFFFFF"
+            android:background="#224AC9"
+            android:onClick="onClick"
+            android:textSize="20sp"
+
+            android:text="@string/fragmentDefinitionIncreaseButton"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
