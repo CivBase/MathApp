@@ -73,8 +73,8 @@ public class PictureFragment extends Fragment {
     }
 
     private void add() {
-        int x = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length - 1)];
-        int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length - 1)];
+        int x = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
+        int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
 
@@ -98,10 +98,9 @@ public class PictureFragment extends Fragment {
     }
 
     private void sub() {
-
-        int x = NUMBERS[subject][2 + RANDOM.nextInt(NUMBERS[subject].length - 3)];
-
-        int y = NUMBERS[subject][RANDOM.nextInt(x)];
+        int idx = RANDOM.nextInt(NUMBERS[subject].length);
+        int x = NUMBERS[subject][idx];
+        int y = NUMBERS[subject][RANDOM.nextInt(idx + 1)];
 
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
@@ -127,9 +126,9 @@ public class PictureFragment extends Fragment {
     }
 
     private void div() {
-        int index = RANDOM.nextInt(NUMBERS[subject].length - 1);
+        int index = RANDOM.nextInt(NUMBERS[subject].length);
         int x = NUMBERS[subject][index];
-        int y = DIVISORS[index][RANDOM.nextInt(DIVISORS[index].length - 1)];
+        int y = DIVISORS[index][RANDOM.nextInt(DIVISORS[index].length)];
 
 
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
@@ -163,8 +162,8 @@ public class PictureFragment extends Fragment {
 
 
     private void mult() {
-        int x = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length - 1)];
-        int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length - 1)];
+        int x = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
+        int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
 
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
