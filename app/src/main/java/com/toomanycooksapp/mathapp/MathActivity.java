@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -45,6 +46,7 @@ public class MathActivity extends ActionBarActivity {
         lesson = calledBy.getExtras().getInt("lesson");
 
         TextView lessonText = (TextView) findViewById(R.id.lessonText);
+        Button gameButton = (Button) findViewById(R.id.gameButton);
         switch (lesson) {
             case 0:
                 lessonText.setText("Addition");
@@ -66,9 +68,11 @@ public class MathActivity extends ActionBarActivity {
                 break;
             case 2:
                 lessonText.setText("Multiplication");
+                ((ViewManager) gameButton.getParent()).removeView(gameButton);
                 break;
             case 3:
                 lessonText.setText("Division");
+                ((ViewManager) gameButton.getParent()).removeView(gameButton);
                 break;
             default:
                 break;
