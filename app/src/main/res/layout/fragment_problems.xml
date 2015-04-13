@@ -15,8 +15,6 @@
           android:layout_height="wrap_content"
           android:orientation="horizontal"
           android:padding="8dp"
-          android:layout_alignParentTop="true"
-          android:layout_alignParentRight="true"
             android:layout_gravity="right">
           <TextView
               android:text="@string/fragmentProblemsDefaultNumber1"
@@ -46,7 +44,8 @@
             android:textColor="#DA3A3A"
             android:textSize="35sp"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
 
         <TextView
             android:text="@string/fragmentProblemsOperation"
@@ -56,13 +55,15 @@
             android:textSize="35sp"
             android:textStyle="bold"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:layout_weight="1" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:layout_weight="1">
 
             <TextView
                 android:text="@string/fragmentProblemsText2"
@@ -108,7 +109,8 @@
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:layout_weight="1">
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -116,8 +118,8 @@
                 android:text="@string/fragmentProblemsCheckBox1"
                 android:textColor="#913AC9"
                 android:textSize="20sp"
-                android:padding="16dp"
-                android:id="@+id/checkBox1" />
+                android:id="@+id/checkBox1"
+                android:padding="10dp" />
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -125,8 +127,8 @@
                 android:text="@string/fragmentProblemsCheckBox2"
                 android:textColor="#913AC9"
                 android:textSize="20sp"
-                android:padding="16dp"
-                android:id="@+id/checkBox2" />
+                android:id="@+id/checkBox2"
+                android:padding="10dp" />
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -134,8 +136,8 @@
                 android:text="@string/fragmentProblemsCheckBox3"
                 android:textColor="#913AC9"
                 android:textSize="20sp"
-                android:padding="16dp"
-                android:id="@+id/checkBox3" />
+                android:id="@+id/checkBox3"
+                android:padding="10dp" />
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -143,8 +145,8 @@
                 android:text="@string/fragmentProblemsCheckBox4"
                 android:textColor="#913AC9"
                 android:textSize="20sp"
-                android:padding="16dp"
-                android:id="@+id/checkBox4" />
+                android:id="@+id/checkBox4"
+                android:padding="10dp" />
         </LinearLayout>
 
         <Button
@@ -158,7 +160,8 @@
             android:layout_margin="32dp"
             android:background="#224AC9"
             android:onClick="onClick"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
     </LinearLayout>
 
 
