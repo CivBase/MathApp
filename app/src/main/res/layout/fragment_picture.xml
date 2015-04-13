@@ -10,7 +10,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal">
 
             <TextView
                 android:text="@string/fragmentPictureText1"
@@ -35,7 +37,6 @@
                 android:paddingRight="5dp" />
 
             <TextView
-                android:text="@string/fragmentPictureText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/picture_lable"
@@ -52,12 +53,16 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/picture_x_layout"
-            android:focusableInTouchMode="false"></LinearLayout>
+            android:focusableInTouchMode="false"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"></LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:text="@string/fragmentPictureText3"
@@ -86,7 +91,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal">
 
             <TextView
                 android:text=""
@@ -123,12 +130,16 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/picture_y_layout"></LinearLayout>
+            android:id="@+id/picture_y_layout"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"></LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:text="@string/fragmentPictureText5"
@@ -139,13 +150,16 @@
                 android:textColor="#DA3A3A"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                android:paddingTop="5dp" />
+                android:paddingTop="5dp"
+                android:gravity="center_horizontal" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
 
             <EditText
                 android:layout_width="wrap_content"
@@ -163,7 +177,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
 
             <Button
                 android:layout_width="wrap_content"
@@ -174,7 +190,6 @@
                 android:onClick="onClick"
                 android:text="@string/fragmentPictureSubmitButton"
                 android:textSize="20sp"
-                android:layout_margin="26dp"
                 android:background="#224AC9"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp" />

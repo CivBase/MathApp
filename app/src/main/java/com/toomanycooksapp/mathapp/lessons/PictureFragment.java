@@ -2,6 +2,7 @@ package com.toomanycooksapp.mathapp.lessons;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +77,11 @@ public class PictureFragment extends Fragment {
         int x = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
         int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
+        if (y == 1) {
+            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("square");
+        } else {
+            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("squares");
+        }
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
         if (y == 1) {
             ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("more square");
@@ -107,6 +113,11 @@ public class PictureFragment extends Fragment {
         int y = NUMBERS[subject][RANDOM.nextInt(idx + 1)];
 
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
+        if (y == 1) {
+            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("square");
+        } else {
+            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("squares");
+        }
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
         ((TextView) vthis.findViewById(R.id.picture_subject)).setText(DefinitionFragment.DEFINITIONS[subject] + " ");
         if (y == 1) {
@@ -157,6 +168,7 @@ public class PictureFragment extends Fragment {
         for (int i = 0; i < y; i++) {
             LinearLayout group = new LinearLayout(getActivity());
             group.setOrientation(LinearLayout.HORIZONTAL);
+            group.setGravity(Gravity.CENTER_HORIZONTAL);
             for (int j = 0; j < answer; j++) {
                 ImageView square = new ImageView(getActivity());
                 square.setPadding(5, 5, 5, 5);
@@ -191,6 +203,7 @@ public class PictureFragment extends Fragment {
         for (int i = 0; i < y; i++) {
             LinearLayout row = new LinearLayout(getActivity());
             row.setOrientation(LinearLayout.HORIZONTAL);
+            row.setGravity(Gravity.CENTER_HORIZONTAL);
             for (int j = 0; j < x; j++) {
                 ImageView square = new ImageView(getActivity());
                 square.setPadding(5, 5, 5, 5);
