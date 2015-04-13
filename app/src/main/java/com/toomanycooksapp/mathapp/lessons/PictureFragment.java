@@ -187,6 +187,7 @@ public class PictureFragment extends Fragment {
         int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
 
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
+        ((TextView) vthis.findViewById(R.id.picture_lable)).setText("squares");
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
         ((TextView) vthis.findViewById(R.id.picture_subject)).setText(DefinitionFragment.DEFINITIONS[subject] + " ");
         ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("times");
