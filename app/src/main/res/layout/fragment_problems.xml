@@ -5,162 +5,161 @@
     android:layout_height="match_parent">
 
 
-  <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      android:padding="8dp"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentRight="true">
-      <TextView
-          android:text="@string/fragmentProblemsDefaultNumber1"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:id="@+id/pass"
-          android:textColor="#2AB4B3"
-          android:textSize="35sp"
-          android:textStyle="bold"
-          />
-      <TextView
-          android:text="@string/fragmentProblemsDefaultNumber2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:id="@+id/outof"
-          android:textColor="#2AB4B3"
-          android:textSize="35sp"
-          android:textStyle="bold"
-          />
-  </LinearLayout>
+          android:orientation="horizontal"
+          android:padding="8dp"
+          android:layout_alignParentTop="true"
+          android:layout_alignParentRight="true"
+            android:layout_gravity="right">
+          <TextView
+              android:text="@string/fragmentProblemsDefaultNumber1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/pass"
+              android:textColor="#2AB4B3"
+              android:textSize="35sp"
+              android:textStyle="bold"
+              />
+          <TextView
+              android:text="@string/fragmentProblemsDefaultNumber2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/outof"
+              android:textColor="#2AB4B3"
+              android:textSize="35sp"
+              android:textStyle="bold"
+              />
+      </LinearLayout>
 
+        <TextView
+            android:text="@string/fragmentProblemsText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/problem_root"
+            android:textColor="#DA3A3A"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal" />
 
+        <TextView
+            android:text="@string/fragmentProblemsOperation"
+            android:id="@+id/problems_subject"
+            android:layout_width="match_parent"
+            android:textColor="#913AC9"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" />
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-    <TextView
-        android:text="@string/fragmentProblemsText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/problem_root"
-        android:textColor="#DA3A3A"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:paddingLeft="32dp"
-        android:paddingTop="32dp" />
+            <TextView
+                android:text="@string/fragmentProblemsText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/problem_root"
+                android:id="@+id/problem_to"
+                android:layout_toRightOf="@+id/problems_subject"
+                android:textColor="#DA3A3A"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
 
-    <TextView
-        android:text="@string/fragmentProblemsOperation"
-        android:id="@+id/problems_subject"
-        android:layout_below="@id/problem_root"
-        android:layout_width="wrap_content"
-        android:textColor="#913AC9"
-        android:textSize="35sp"
-        android:paddingLeft="64dp"
-        android:textStyle="bold"
-        android:paddingTop="16dp"
-        android:layout_height="wrap_content"
-        android:paddingRight="5dp" />
+            <TextView
+                android:text="@string/fragmentProblemsDefaultNumber3"
+                android:id="@+id/problem_total"
+                android:layout_below="@id/problem_root"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@id/problem_to"
+                android:textColor="#913AC9"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
 
-    <TextView
-        android:text="@string/fragmentProblemsText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/problem_root"
-        android:id="@+id/problem_to"
-        android:layout_toRightOf="@+id/problems_subject"
-        android:textColor="#DA3A3A"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:paddingTop="16dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" />
+            <TextView
+                android:text="@string/fragmentProblemsText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/problem_root"
+                android:layout_toRightOf="@+id/problem_total"
+                android:textColor="#DA3A3A"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:id="@+id/textView"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
+        </LinearLayout>
 
-    <TextView
-        android:text="@string/fragmentProblemsDefaultNumber3"
-        android:id="@+id/problem_total"
-        android:layout_below="@id/problem_root"
-        android:layout_width="wrap_content"
-        android:layout_toRightOf="@id/problem_to"
-        android:textColor="#913AC9"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:paddingTop="16dp"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-    <TextView
-        android:text="@string/fragmentProblemsText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/problem_root"
-        android:layout_toRightOf="@+id/problem_total"
-        android:textColor="#DA3A3A"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:paddingTop="16dp"
-        android:id="@+id/textView"
-        android:paddingLeft="5dp" />
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fragmentProblemsCheckBox1"
+                android:textColor="#913AC9"
+                android:textSize="20sp"
+                android:padding="16dp"
+                android:id="@+id/checkBox1" />
 
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fragmentProblemsCheckBox2"
+                android:textColor="#913AC9"
+                android:textSize="20sp"
+                android:padding="16dp"
+                android:id="@+id/checkBox2" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fragmentProblemsCheckBox1"
-        android:textColor="#913AC9"
-        android:textSize="20sp"
-        android:padding="16dp"
-        android:id="@+id/checkBox1"
-        android:layout_below="@id/problem_to"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fragmentProblemsCheckBox3"
+                android:textColor="#913AC9"
+                android:textSize="20sp"
+                android:padding="16dp"
+                android:id="@+id/checkBox3" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fragmentProblemsCheckBox2"
-        android:textColor="#913AC9"
-        android:textSize="20sp"
-        android:padding="16dp"
-        android:id="@+id/checkBox2"
-        android:layout_below="@id/checkBox1"
-        android:layout_alignLeft="@+id/checkBox1" />
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fragmentProblemsCheckBox4"
+                android:textColor="#913AC9"
+                android:textSize="20sp"
+                android:padding="16dp"
+                android:id="@+id/checkBox4" />
+        </LinearLayout>
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fragmentProblemsCheckBox3"
-        android:textColor="#913AC9"
-        android:textSize="20sp"
-        android:padding="16dp"
-        android:id="@+id/checkBox3"
-        android:layout_below="@id/checkBox2"
-        android:layout_alignLeft="@+id/checkBox1" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fragmentProblemsCheckBox4"
-        android:textColor="#913AC9"
-        android:textSize="20sp"
-        android:padding="16dp"
-        android:id="@+id/checkBox4"
-        android:layout_below="@id/checkBox3"
-        android:layout_alignLeft="@+id/checkBox1" />
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/problem_submit"
-        android:padding="15dp"
-        android:textColor="#FFFFFF"
-        android:inputType="number"
-        android:text="@string/fragmentProblemsSubmitButton"
-        android:textSize="20sp"
-        android:layout_margin="32dp"
-        android:background="#224AC9"
-        android:onClick="onClick"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/problem_submit"
+            android:textColor="#FFFFFF"
+            android:inputType="number"
+            android:text="@string/fragmentProblemsSubmitButton"
+            android:textSize="20sp"
+            android:layout_margin="32dp"
+            android:background="#224AC9"
+            android:onClick="onClick"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 
 
 </RelativeLayout>
