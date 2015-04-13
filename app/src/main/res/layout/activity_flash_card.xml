@@ -23,7 +23,8 @@
             android:background="#224AC9"
             android:textColor="#FFFFFF"
             android:layout_gravity="center_horizontal"
-            android:text="@string/activityFlashCardFlipButton" />
+            android:text="@string/activityFlashCardFlipButton"
+            android:layout_margin="5dp" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -38,7 +39,8 @@
                 android:background="#224AC9"
                 android:textColor="#FFFFFF"
                 android:id="@+id/previousButton"
-                android:text="@string/activityFlashCardPreviousButton" />
+                android:text="@string/activityFlashCardPreviousButton"
+                android:layout_margin="5dp" />
 
             <Button
                 android:layout_width="0dp"
@@ -47,7 +49,8 @@
                 android:background="#224AC9"
                 android:textColor="#FFFFFF"
                 android:id="@+id/nextButton"
-                android:text="@string/activityFlashCardNextButton" />
+                android:text="@string/activityFlashCardNextButton"
+                android:layout_margin="5dp" />
         </LinearLayout>
     </LinearLayout>
 

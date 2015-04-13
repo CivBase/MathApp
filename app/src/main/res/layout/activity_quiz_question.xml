@@ -7,65 +7,67 @@
     tools:context="com.toomanycooksapp.mathapp.QuizQuestionActivity">
 
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textSize="44sp"
-                android:textColor="#DA3A3A"
-                android:text="@string/activityQuizQuestionDefaultText"
-                android:id="@+id/quizQuestion" />
-
-
-                <Button
-                    android:layout_width="match_parent"
+        <TextView
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="#224AC9"
-                    android:padding="5dp"
-                    android:layout_margin="3dp"
-                    android:textColor="#FFFFFF"
+            android:textSize="44sp"
+                    android:textColor="#DA3A3A"
+                    android:text="@string/activityQuizQuestionDefaultText"
+                    android:id="@+id/quizQuestion"
+            android:layout_weight="1"
+            android:gravity="center_horizontal" />
 
-                    android:layout_centerInParent="true"
-                    android:text="@string/activityQuizQuestionAnswer0Button"
-                    android:id="@+id/answer0" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#224AC9"
+            android:textColor="#FFFFFF"
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="3dp"
-                    android:layout_margin="5dp"
-                    android:background="#224AC9"
-                    android:textColor="#FFFFFF"
-                    android:layout_below="@id/answer0"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/activityQuizQuestionAnswer1Button"
-                    android:id="@+id/answer1" />
+            android:text="@string/activityQuizQuestionAnswer0Button"
+            android:id="@+id/answer0"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#224AC9"
-                    android:padding="3dp"
-                    android:layout_margin="5dp"
-                    android:textColor="#FFFFFF"
-                    android:layout_below="@id/answer1"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/activityQuizQuestionAnswer2Button"
-                    android:id="@+id/answer2" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#224AC9"
+            android:textColor="#FFFFFF"
+            android:text="@string/activityQuizQuestionAnswer1Button"
+            android:id="@+id/answer1"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
 
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#224AC9"
+            android:textColor="#FFFFFF"
+            android:text="@string/activityQuizQuestionAnswer2Button"
+            android:id="@+id/answer2"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/answer2"
-                    android:layout_centerHorizontal="true"
-                    android:padding="3dp"
-                    android:layout_margin="5dp"
-                    android:background="#224AC9"
-                    android:textColor="#FFFFFF"
-                    android:text="@string/activityQuizQuestionAnswer3Button"
-                    android:id="@+id/answer3" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#224AC9"
+            android:textColor="#FFFFFF"
+            android:text="@string/activityQuizQuestionAnswer3Button"
+            android:id="@+id/answer3"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
