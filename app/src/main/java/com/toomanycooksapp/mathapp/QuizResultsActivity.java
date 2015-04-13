@@ -48,7 +48,12 @@ public class QuizResultsActivity extends ActionBarActivity {
         quiz = QuizSingleton.getInstance();
 
         TextView resultsMessage = (TextView) findViewById(R.id.resultsMessage);
-        resultsMessage.setText("You answered " + quiz.getNumberCorrect() + " questions correctly out of " + quiz.getNumberOfQuestions() + "!");
+        String msg = "You answered " + quiz.getNumberCorrect() + " question";
+        if (quiz.getNumberCorrect() != 1) {
+            msg += "s";
+        }
+        msg += " correctly out of " + quiz.getNumberOfQuestions() + "!";
+        resultsMessage.setText(msg);
 
         Button homeButton = (Button) findViewById(R.id.homeButton);
         homeButton.setOnClickListener(new View.OnClickListener() {
