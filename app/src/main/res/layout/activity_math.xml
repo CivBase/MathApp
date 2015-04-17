@@ -11,84 +11,73 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <TextView
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#DA3A3A"
-            android:id="@+id/lessonText"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:text="@string/activityMathDefaultText"
-            android:layout_weight="1"
-            android:gravity="center_horizontal" />
+            android:layout_height="70sp">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#DA3A3A"
+                android:id="@+id/lessonText"
+                android:text="@string/activityMathDefaultText"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textSize="50sp" />
+        </LinearLayout>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activityMathLessonButton"
             android:id="@+id/lessonButton"
-            android:textColor="#FFFFFF"
             android:background="#224AC9"
-            android:layout_below="@id/lessonText"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="5dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@id/lessonText"
-            android:layout_alignEnd="@id/lessonText"
+            android:text="@string/activityMathLessonButton"
             android:layout_weight="1"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            android:textSize="40sp"
+            android:textAllCaps="true" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activityMathGameButton"
             android:id="@+id/gameButton"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/lessonButton"
-            android:textColor="#FFFFFF"
             android:background="#224AC9"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/lessonButton"
-            android:layout_alignEnd="@+id/lessonButton"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"
+            android:text="@string/activityMathGameButton"
             android:layout_weight="1"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            android:textSize="40sp"
+            android:textAllCaps="true" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activityMathFlashCardsButton"
             android:id="@+id/fcButton"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/gameButton"
-            android:textColor="#FFFFFF"
             android:background="#224AC9"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/gameButton"
-            android:layout_alignEnd="@+id/gameButton"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"
+            android:text="@string/activityMathFlashCardsButton"
             android:layout_weight="1"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            android:textSize="40sp"
+            android:textAllCaps="true" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activityMathQuizButton"
             android:id="@+id/quizButton"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/fcButton"
-            android:textColor="#FFFFFF"
             android:background="#224AC9"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/fcButton"
-            android:layout_alignEnd="@+id/fcButton"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"
+            android:text="@string/activityMathQuizButton"
             android:layout_weight="1"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            android:textSize="40sp"
+            android:textAllCaps="true" />
     </LinearLayout>
-
 </RelativeLayout>

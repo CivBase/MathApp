@@ -45,7 +45,6 @@
                 android:textStyle="bold"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -55,7 +54,9 @@
             android:id="@+id/picture_x_layout"
             android:focusableInTouchMode="false"
             android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"></LinearLayout>
+            android:layout_gravity="center_horizontal">
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -85,7 +86,6 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -132,7 +132,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/picture_y_layout"
             android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"></LinearLayout>
+            android:layout_gravity="center_horizontal">
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -189,13 +191,11 @@
                 android:inputType="number"
                 android:onClick="onClick"
                 android:text="@string/fragmentPictureSubmitButton"
-                android:textSize="20sp"
                 android:background="#224AC9"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp" />
+                android:textSize="25sp"
+                android:textAllCaps="true"
+                android:padding="10sp"
+                android:layout_margin="32dp" />
         </LinearLayout>
-
     </LinearLayout>
-
-
 </RelativeLayout>

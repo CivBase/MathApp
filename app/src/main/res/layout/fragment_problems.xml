@@ -4,37 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
         <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
             android:layout_gravity="right">
-          <TextView
-              android:text="@string/fragmentProblemsDefaultNumber1"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/pass"
-              android:textColor="#2AB4B3"
-              android:textSize="35sp"
-              android:textStyle="bold"
-              />
-          <TextView
-              android:text="@string/fragmentProblemsDefaultNumber2"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/outof"
-              android:textColor="#2AB4B3"
-              android:textSize="35sp"
-              android:textStyle="bold"
-              />
-      </LinearLayout>
+
+            <TextView
+                android:text="@string/fragmentProblemsDefaultNumber1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pass"
+                android:textColor="#2AB4B3"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:text="@string/fragmentProblemsDefaultNumber2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/outof"
+                android:textColor="#2AB4B3"
+                android:textSize="35sp" />
+        </LinearLayout>
 
         <TextView
             android:text="@string/fragmentProblemsText1"
@@ -156,13 +154,14 @@
             android:textColor="#FFFFFF"
             android:inputType="number"
             android:text="@string/fragmentProblemsSubmitButton"
-            android:textSize="20sp"
             android:layout_margin="32dp"
             android:background="#224AC9"
             android:onClick="onClick"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:nestedScrollingEnabled="true"
+            android:textSize="25sp"
+            android:textAllCaps="true"
+            android:padding="10sp" />
     </LinearLayout>
-
-
 </RelativeLayout>

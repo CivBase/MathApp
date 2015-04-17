@@ -15,13 +15,12 @@ import com.toomanycooksapp.mathapp.lessons.LessonsActivity;
 
 
 public class MathActivity extends ActionBarActivity {
-
-    // This is sent in the intent to the LessonActivity
+    // this is sent in the intent to the LessonActivity
     // 0 -> addition
     // 1 -> subtraction
     // 2 -> multiplication
     // 3 -> division
-    int lesson;
+    private int lesson;
 
     Button lessonButton = null;
     Button gameButton = null;
@@ -41,7 +40,7 @@ public class MathActivity extends ActionBarActivity {
         fcButton = (Button) findViewById(R.id.fcButton);
         quizButton = (Button) findViewById(R.id.quizButton);
 
-        // Get called intent and integer corresponding to correct lesson
+        // get called intent and integer corresponding to correct lesson
         Intent calledBy = getIntent();
         lesson = calledBy.getExtras().getInt("lesson");
 
@@ -74,8 +73,6 @@ public class MathActivity extends ActionBarActivity {
                 lessonText.setText("Division");
                 ((ViewManager) gameButton.getParent()).removeView(gameButton);
                 break;
-            default:
-                break;
         }
 
         fcButton.setOnClickListener(new View.OnClickListener() {
@@ -84,12 +81,14 @@ public class MathActivity extends ActionBarActivity {
                 startFlashCard();
             }
         });
+
         quizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startQuiz();
             }
         });
+
         lessonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,19 +111,20 @@ public class MathActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // inflate the menu
+        // this adds items to the action bar if it is present
         getMenuInflater().inflate(R.menu.menu_math, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // handle action bar item clicks here
+        // the action bar will automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -132,26 +132,26 @@ public class MathActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Creates intent and starts AddGameActivity
+    // creates intent and starts AddGameActivity
     private void startAddGame() {
         Intent intent = new Intent(this, AddGameActivity.class);
         startActivity(intent);
     }
 
-    // Creates intent and starts SubtractionGameActivity
+    // creates intent and starts SubtractionGameActivity
     private void startSubtractionGame() {
         Intent intent = new Intent(this, SubtractionGameActivity.class);
         startActivity(intent);
     }
 
-    // Creates intent and starts FlashCardActivity
+    // creates intent and starts FlashCardActivity
     private void startFlashCard() {
         Intent intent = new Intent(this, FlashCardActivity.class);
         intent.putExtra("lesson", lesson);
         startActivity(intent);
     }
 
-    // Creates intent and starts QuizQuestionActivity
+    // creates intent and starts QuizQuestionActivity
     private void startQuiz() {
         QuizSingleton.getNewInstance();
         Intent intent = new Intent(this, QuizQuestionActivity.class);

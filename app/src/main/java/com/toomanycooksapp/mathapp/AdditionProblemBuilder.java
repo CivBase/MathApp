@@ -2,14 +2,12 @@ package com.toomanycooksapp.mathapp;
 
 import java.util.Random;
 
-/**
- * Created by Zachary Bales on 2/22/2015.
- */
+
 public class AdditionProblemBuilder implements ProblemBuilder {
-    Random rand;
+    private static Random rand = new Random();
 
     public AdditionProblemBuilder() {
-        this.rand = new Random();
+        // do nothing
     }
 
     @Override

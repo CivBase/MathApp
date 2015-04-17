@@ -13,11 +13,12 @@ import android.view.View;
 import java.util.Random;
 import java.util.Stack;
 
+
 /**
- * Created by david on 2/18/15.
- * Creates view for the addition game
+ * Creates view for the addition game.
  */
 public class DrawAddGame extends View {
+    private static Random rand = new Random();
 
     private int[] fills = new int[49];
     private boolean changed = false;
@@ -30,19 +31,16 @@ public class DrawAddGame extends View {
     private int[] dropQueue = new int[3];
     private boolean newGame = true;
 
-
     public DrawAddGame(Context context) {
         super(context);
     }
 
     private void setGoal() {
-        Random r = new Random();
-        goal = r.nextInt(18 - 10 + 1) + 10;
+        goal = rand.nextInt(18 - 10 + 1) + 10;
     }
 
     private void setNumToDrop() {
-        Random r = new Random();
-        int tempDrop = r.nextInt(9 - 1 + 1) + 1;
+        int tempDrop = rand.nextInt(9 - 1 + 1) + 1;
         numToDrop = dropQueue[0];
         dropQueue[0] = dropQueue[1];
         dropQueue[1] = dropQueue[2];
@@ -50,9 +48,8 @@ public class DrawAddGame extends View {
     }
 
     private void initDropQueue() {
-        Random r = new Random();
         for (int i = 0; i < 3; i++) {
-            dropQueue[i] = r.nextInt(9 - 1 + 1) + 1;
+            dropQueue[i] = rand.nextInt(9 - 1 + 1) + 1;
         }
     }
 
@@ -60,7 +57,6 @@ public class DrawAddGame extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         if (newGame) {
             initDropQueue();
             newGame = false;
@@ -81,10 +77,12 @@ public class DrawAddGame extends View {
         fillGreenText.setTextSize(100);
 
         if (gameOver) {
-            canvas.drawText("GAMEOVER", (canvas.getWidth() / 4), (canvas.getHeight() / 2), fillBlueText);
-            canvas.drawText("SCORE", (canvas.getWidth() / 4) + 100, (canvas.getHeight() / 2) + 150, fillBlueText);
-            canvas.drawText("_______", (canvas.getWidth() / 4) + 100, (canvas.getHeight() / 2) + 150, fillBlueText);
-            canvas.drawText(String.valueOf(score), (canvas.getWidth() / 2) - 50, (canvas.getHeight() / 2) + 250, fillBlueText);
+            int x = canvas.getWidth() / 4;
+            int y = canvas.getHeight() / 2;
+            canvas.drawText("GAMEOVER", x, y, fillBlueText);
+            canvas.drawText("SCORE", x + 100, y + 150, fillBlueText);
+            canvas.drawText("_______", x + 100, y + 150, fillBlueText);
+            canvas.drawText(String.valueOf(score), x * 2 - 50, y + 250, fillBlueText);
         } else {
             isUpdating = false;
 
@@ -98,7 +96,6 @@ public class DrawAddGame extends View {
             int y = canvas.getHeight() - (9 * squareSize);
             int xEnd = canvas.getWidth() - squareSize - 1;
 
-
             Rect[] squares = new Rect[49];
             for (int i = 0; i < squares.length; i++) {
                 squares[i] = new Rect();
@@ -106,7 +103,8 @@ public class DrawAddGame extends View {
 
                 canvas.drawRect(squares[i], borderBlue);
                 if (fills[i] != 0) {
-                    canvas.drawText(String.valueOf(fills[i]), (x + (squareSize / 4)), (y + squareSize - 20), fillBlueText);
+                    canvas.drawText(String.valueOf(
+                        fills[i]), (x + (squareSize / 4)), (y + squareSize - 20), fillBlueText);
                 }
 
                 x += squareSize;
@@ -121,18 +119,36 @@ public class DrawAddGame extends View {
 
             goalText.set(squareSize, squareSize, squareSize + 300, squareSize + 100);
             canvas.drawRect(goalText, borderBlue);
-            canvas.drawText("GOAL", (squareSize + (squareSize / 4)), (squareSize + squareSize - 20), fillBlueText);
-            canvas.drawText(String.valueOf(goal), squareSize + (squareSize / 4), (squareSize * 2 + squareSize - 20), fillBlueText);
+            canvas.drawText(
+                "GOAL",
+                (squareSize + (squareSize / 4)),
+                (squareSize + squareSize - 20),
+                fillBlueText);
+
+            canvas.drawText(
+                String.valueOf(goal),
+                squareSize + (squareSize / 4),
+                (squareSize * 2 + squareSize - 20),
+                fillBlueText);
 
             scoreText.set(squareSize + 400, squareSize, squareSize + 800, squareSize + 100);
             canvas.drawRect(scoreText, borderBlue);
-            canvas.drawText("SCORE", (squareSize + 400 + (squareSize / 4)), (squareSize + squareSize - 20), fillBlueText);
-            canvas.drawText(String.valueOf(score), squareSize + 400 + (squareSize / 4), (squareSize * 2 + squareSize - 20), fillBlueText);
+            canvas.drawText(
+                "SCORE",
+                (squareSize + 400 + (squareSize / 4)),
+                (squareSize + squareSize - 20),
+                fillBlueText);
 
-            // Draw goalqueue
+            canvas.drawText(
+                String.valueOf(score),
+                squareSize + 400 + (squareSize / 4),
+                (squareSize * 2 + squareSize - 20),
+                fillBlueText);
+
+            // draw goal queue
             Rect queue[] = new Rect[3];
 
-            // If number has empty space below it, moves the number down and redraws the canvas
+            // if number has empty space below it, moves the number down and redraws the canvas
             for (int i = 41; i >= 0; i--) {
                 if (fills[i + 7] == 0 && fills[i] != 0) {
                     fills[i + 7] = fills[i];
@@ -143,40 +159,71 @@ public class DrawAddGame extends View {
             if (isUpdating) {
                 try {
                     for (int i = 0; i < 3; i++) {
-                        //            Log.d("Square", "Square " + i + ": " + fills[i]);
+//                        Log.d("Square", "Square " + i + ": " + fills[i]);
                         queue[i] = new Rect();
-                        queue[i].set(squareSize + (squareSize * i), canvas.getHeight() - squareSize, squareSize + (squareSize * i) + squareSize, canvas.getHeight());
+                        queue[i].set(
+                            squareSize + (squareSize * i),
+                            canvas.getHeight() - squareSize,
+                            squareSize + (squareSize * i) + squareSize,
+                            canvas.getHeight());
 
                         canvas.drawRect(queue[i], borderBlue);
                         if (dropQueue[i] != 0) {
-                            canvas.drawText(String.valueOf(dropQueue[i]), (squareSize + (squareSize * i) + (squareSize / 4)), (canvas.getHeight() - squareSize + squareSize - 20), fillBlueText);
+                            canvas.drawText(
+                                String.valueOf(dropQueue[i]),
+                                (squareSize + (squareSize * i) + (squareSize / 4)),
+                                (canvas.getHeight() - squareSize + squareSize - 20),
+                                fillBlueText);
                         }
                     }
+
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
-
+                    // do nothing
                 }
                 invalidate();
             } else {
                 setNumToDrop();
-                // Draw goalqueue
 
+                // draw goal queue
                 for (int i = 0; i < 3; i++) {
-                    //            Log.d("Square", "Square " + i + ": " + fills[i]);
+//                    Log.d("Square", "Square " + i + ": " + fills[i]);
                     queue[i] = new Rect();
-                    queue[i].set(squareSize + (squareSize * i), canvas.getHeight() - squareSize, squareSize + (squareSize * i) + squareSize, canvas.getHeight());
+                    queue[i].set(
+                        squareSize + (squareSize * i),
+                        canvas.getHeight() - squareSize,
+                        squareSize + (squareSize * i) + squareSize,
+                        canvas.getHeight());
 
                     canvas.drawRect(queue[i], borderBlue);
                     if (dropQueue[i] != 0) {
-                        canvas.drawText(String.valueOf(dropQueue[i]), (squareSize + (squareSize * i) + (squareSize / 4)), (canvas.getHeight() - squareSize + squareSize - 20), fillBlueText);
+                        canvas.drawText(
+                            String.valueOf(dropQueue[i]),
+                            (squareSize + (squareSize * i) + (squareSize / 4)),
+                            (canvas.getHeight() - squareSize + squareSize - 20),
+                            fillBlueText);
                     }
                 }
-                Log.d("drop nums", "num: " + numToDrop + " 1: " + dropQueue[0] + " 2: " + dropQueue[1] + " 3: " + dropQueue[2]);
-                Rect toDropRect = new Rect();
-                toDropRect.set((4 * squareSize), canvas.getHeight() / 4, 5 * squareSize, (canvas.getHeight() / 4) + squareSize);
-                canvas.drawRect(toDropRect, borderBlue);
 
-                canvas.drawText(String.valueOf(numToDrop), ((4 * squareSize) + (squareSize / 4)), ((canvas.getHeight() / 4) + squareSize - 20), fillBlueText);
+                Log.d(
+                    "drop nums",
+                    "num: " + numToDrop +
+                    " 1: " + dropQueue[0] +
+                    " 2: " + dropQueue[1] +
+                    " 3: " + dropQueue[2]);
+
+                Rect toDropRect = new Rect();
+                toDropRect.set(
+                    (4 * squareSize),
+                    canvas.getHeight() / 4, 5 * squareSize,
+                    (canvas.getHeight() / 4) + squareSize);
+
+                canvas.drawRect(toDropRect, borderBlue);
+                canvas.drawText(
+                    String.valueOf(numToDrop),
+                    ((4 * squareSize) + (squareSize / 4)),
+                    ((canvas.getHeight() / 4) + squareSize - 20),
+                    fillBlueText);
 
                 int startPos = 0;
                 for (int i = 0; i < 48; i++) {
@@ -185,11 +232,14 @@ public class DrawAddGame extends View {
                     int curTotal = 0;
                     if (fills[i] != 0) {
                         while (curPos != startPos * 7 && fills[curPos] != 0) {
-                            if (i != 0 && i != 7 && i != 14 && i != 21 && i != 28 && i != 35 && i != 42) {
+                            if (i != 0 && i != 7 && i != 14 && i != 21 && i != 28 && i != 35 &&
+                                    i != 42) {
+
                                 if (fills[i - 1] != 0) {
                                     break;
                                 }
                             }
+
                             curTotal += fills[curPos];
                             toRemove.push(curPos);
                             curPos++;
@@ -197,14 +247,21 @@ public class DrawAddGame extends View {
                                 break;
                             }
                         }
+
                         if (curTotal == goal) {
                             while (!toRemove.empty()) {
                                 fills[toRemove.pop()] = 0;
                                 score += 10;
                             }
+
                             setGoal();
-                            canvas.drawText("GOAL", (canvas.getWidth() / 2) - 225, (canvas.getHeight() / 2) - 200, fillGreenText);
-                            final Handler handler = new Handler();
+                            canvas.drawText(
+                                "GOAL",
+                                (canvas.getWidth() / 2) - 225,
+                                (canvas.getHeight() / 2) - 200,
+                                fillGreenText);
+
+                            Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -213,9 +270,11 @@ public class DrawAddGame extends View {
                             }, 300);
                             break;
                         }
+
                         while (!toRemove.empty()) {
                             toRemove.pop();
                         }
+
                         curPos = i;
                         curTotal = 0;
                         while (curPos != startPos + 41 && fills[curPos] != 0) {
@@ -227,14 +286,21 @@ public class DrawAddGame extends View {
                                 break;
                             }
                         }
+
                         if (curTotal == goal) {
                             while (!toRemove.empty()) {
                                 fills[toRemove.pop()] = 0;
                                 score += 10;
                             }
+
                             setGoal();
-                            canvas.drawText("GOAL", (canvas.getWidth() / 2) - 225, (canvas.getHeight() / 2) - 200, fillGreenText);
-                            final Handler handler = new Handler();
+                            canvas.drawText(
+                                "GOAL",
+                                (canvas.getWidth() / 2) - 225,
+                                (canvas.getHeight() / 2) - 200,
+                                fillGreenText);
+
+                            Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -277,6 +343,7 @@ public class DrawAddGame extends View {
                 } else {
                     fills[idx] = numToDrop;
                 }
+
                 invalidate();
                 return true;
 

@@ -24,7 +24,9 @@
             android:textColor="#FFFFFF"
             android:layout_gravity="center_horizontal"
             android:text="@string/activityFlashCardFlipButton"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:textSize="40sp"
+            android:textAllCaps="true" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -40,7 +42,9 @@
                 android:textColor="#FFFFFF"
                 android:id="@+id/previousButton"
                 android:text="@string/activityFlashCardPreviousButton"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:textSize="25sp"
+                android:textAllCaps="true" />
 
             <Button
                 android:layout_width="0dp"
@@ -50,7 +54,9 @@
                 android:textColor="#FFFFFF"
                 android:id="@+id/nextButton"
                 android:text="@string/activityFlashCardNextButton"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:textSize="25sp"
+                android:textAllCaps="true" />
         </LinearLayout>
     </LinearLayout>
 

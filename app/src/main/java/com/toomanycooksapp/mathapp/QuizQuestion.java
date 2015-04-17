@@ -1,8 +1,6 @@
 package com.toomanycooksapp.mathapp;
 
-/**
- * Created by Zachary Bales on 2/25/2015.
- */
+
 public class QuizQuestion {
     private Problem prob;
 

@@ -1,6 +1,5 @@
 package com.toomanycooksapp.mathapp;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static android.app.AlertDialog.Builder;
-
 
 public class QuizQuestionActivity extends ActionBarActivity {
-
     private QuizSingleton quiz;
     private ProblemBuilder pb;
     private QuizQuestion qq;
@@ -33,11 +29,11 @@ public class QuizQuestionActivity extends ActionBarActivity {
         Intent calledBy = getIntent();
         lesson = calledBy.getExtras().getInt("lesson");
         switch (lesson) {
-            //0 -> Addition
+            //0 -> addition
             case 0:
                 pb = new AdditionProblemBuilder();
                 break;
-            //1 -> Subtraction
+            //1 -> subtraction
             case 1:
                 pb = new SubtractionProblemBuilder();
                 break;
@@ -69,10 +65,10 @@ public class QuizQuestionActivity extends ActionBarActivity {
             answer[i].setText(qq.answerView(i));
             answer[i].setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    //TODO Pop up to report correctness
+                public void onClick(View view) {
+                    //TODO: pop up to report correctness
                     int buttonIndex = -1;
-                    switch (v.getId()) {
+                    switch (view.getId()) {
                         case R.id.answer0:
                             buttonIndex = 0;
                             break;
@@ -86,63 +82,65 @@ public class QuizQuestionActivity extends ActionBarActivity {
                             buttonIndex = 3;
                             break;
                     }
+
                     if (qq.isTrue(buttonIndex)) {
                         quiz.answeredQuestion(true);
-
-                        Builder alert = new Builder(v.getContext());
-                        alert.setMessage("Correct!");
-                        alert.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (quiz.getCurrentQuestion() == quiz.getNumberOfQuestions()) {
-                                    goToQuizResults();
-                                } else {
-                                    goToNextQuestion();
+                        Popup.create(
+                            view.getContext(),
+                            "",
+                            "Correct!",
+                            "Continue",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (quiz.getCurrentQuestion() == quiz.getNumberOfQuestions()) {
+                                        goToQuizResults();
+                                    } else {
+                                        goToNextQuestion();
+                                    }
                                 }
-                            }
-                        });
-                        AlertDialog popup = alert.create();
-                        popup.show();
-                    } else {
-                        quiz.answeredQuestion(false);
+                            });
 
-                        Builder alert = new Builder(v.getContext());
-                        alert.setMessage("Incorrect!");
-                        alert.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (quiz.getCurrentQuestion() == quiz.getNumberOfQuestions()) {
-                                    goToQuizResults();
-                                } else {
-                                    goToNextQuestion();
-                                }
-                            }
-
-                        });
-                        AlertDialog popup = alert.create();
-                        popup.show();
+                        return;
                     }
+
+                    quiz.answeredQuestion(false);
+                    Popup.create(
+                        view.getContext(),
+                        "",
+                        "Incorrect!",
+                        "Continue",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (quiz.getCurrentQuestion() == quiz.getNumberOfQuestions()) {
+                                    goToQuizResults();
+                                } else {
+                                    goToNextQuestion();
+                                }
+                            }
+                        });
                 }
             });
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // inflate the menu
+        // this adds items to the action bar if it is present
         getMenuInflater().inflate(R.menu.menu_quiz_question, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // handle action bar item clicks here
+        // the action bar will automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -157,7 +155,7 @@ public class QuizQuestionActivity extends ActionBarActivity {
         finish();
     }
 
-    //Makes intent for next question and goes to it, deleting itself on exit
+    // makes intent for next question and goes to it, deleting itself on exit
     public void goToNextQuestion() {
         Intent intent = new Intent(this, QuizQuestionActivity.class);
         intent.putExtra("lesson", lesson);

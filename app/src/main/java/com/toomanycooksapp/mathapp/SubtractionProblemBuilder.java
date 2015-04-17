@@ -2,14 +2,12 @@ package com.toomanycooksapp.mathapp;
 
 import java.util.Random;
 
-/**
- * Created by Zachary Bales on 3/15/2015.
- */
+
 public class SubtractionProblemBuilder implements ProblemBuilder {
-    Random rand;
+    private static Random rand = new Random();
 
     public SubtractionProblemBuilder() {
-        this.rand = new Random();
+        // do nothing
     }
 
     @Override
@@ -26,8 +24,8 @@ public class SubtractionProblemBuilder implements ProblemBuilder {
             p.setQuestion(buildQuestionString(op2, op1));
             p.setAnswer(0, buildCorrectAnswer(op2, op1));
         }
-        p.setCorrectIndex(0);
 
+        p.setCorrectIndex(0);
         return p;
     }
 

@@ -2,14 +2,12 @@ package com.toomanycooksapp.mathapp;
 
 import java.util.Random;
 
-/**
- * Created by Zachary Bales on 3/15/2015.
- */
+
 public class DivisionProblemBuilder implements ProblemBuilder {
-    Random rand;
+    private static Random rand = new Random();
 
     public DivisionProblemBuilder() {
-        this.rand = new Random();
+        // do nothing
     }
 
     @Override
@@ -21,6 +19,7 @@ public class DivisionProblemBuilder implements ProblemBuilder {
         while (op2 == 0) {
             op2 = NumberGenerator.generateNumber();
         }
+
         int op1 = ans * op2;
 
         p.setQuestion(buildQuestionString(op1, op2));
@@ -39,6 +38,7 @@ public class DivisionProblemBuilder implements ProblemBuilder {
         while (op2 == 0) {
             op2 = NumberGenerator.generateNumber();
         }
+
         int op1 = ans * op2;
 
         p.setQuestion(buildQuestionString(op1, op2));

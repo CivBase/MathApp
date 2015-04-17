@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 
 public class QuizResultsActivity extends ActionBarActivity {
-
     private QuizSingleton quiz;
     private int lesson;
     private String lessonName = "";
@@ -28,7 +27,7 @@ public class QuizResultsActivity extends ActionBarActivity {
         Intent calledBy = getIntent();
         lesson = calledBy.getExtras().getInt("lesson");
         switch (lesson) {
-            //0 -> Addition
+            //0 -> addition
             case 0:
                 lessonName = "addition";
                 break;
@@ -52,6 +51,7 @@ public class QuizResultsActivity extends ActionBarActivity {
         if (quiz.getNumberCorrect() != 1) {
             msg += "s";
         }
+
         msg += " correctly out of " + quiz.getNumberOfQuestions() + "!";
         resultsMessage.setText(msg);
 
@@ -64,22 +64,22 @@ public class QuizResultsActivity extends ActionBarActivity {
         });
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // inflate the menu
+        // this adds items to the action bar if it is present
         getMenuInflater().inflate(R.menu.menu_quiz_results, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // handle action bar item clicks here
+        // the action bar will automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -87,7 +87,7 @@ public class QuizResultsActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //Returns to MainActivity, deleting itself on exit
+    // returns to MainActivity, deleting itself on exit
     public void goToHomeScreen() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

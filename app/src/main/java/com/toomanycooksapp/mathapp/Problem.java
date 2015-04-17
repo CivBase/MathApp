@@ -1,8 +1,6 @@
 package com.toomanycooksapp.mathapp;
 
-/**
- * Created by Zachary Bales on 2/22/2015.
- */
+
 public class Problem {
     public static final int FLASH_CARD = 0;
     public static final int QUIZ = 1;

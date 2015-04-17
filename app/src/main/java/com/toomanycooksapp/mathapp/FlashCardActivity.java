@@ -12,13 +12,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class FlashCardActivity extends ActionBarActivity {
 
+public class FlashCardActivity extends ActionBarActivity {
     private ArrayList<FlashCard> fc;
     private int currentIndex;
     private boolean questionDisplayed;
     private ProblemBuilder pb;
-    private int lesson;
     private TextView flashCardView;
 
     private Button flipButton;
@@ -36,13 +35,13 @@ public class FlashCardActivity extends ActionBarActivity {
         fc = new ArrayList<FlashCard>();
 
         Intent calledBy = getIntent();
-        lesson = calledBy.getExtras().getInt("lesson");
+        int lesson = calledBy.getExtras().getInt("lesson");
         switch (lesson) {
-            //0 -> Addition
+            // 0 -> addition
             case 0:
                 pb = new AdditionProblemBuilder();
                 break;
-            //1 -> Subtraction
+            // 1 -> subtraction
             case 1:
                 pb = new SubtractionProblemBuilder();
                 break;
@@ -87,22 +86,22 @@ public class FlashCardActivity extends ActionBarActivity {
         questionDisplayed = true;
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // inflate the menu
+        // this adds items to the action bar if it is present
         getMenuInflater().inflate(R.menu.menu_flash_card, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // handle action bar item clicks here
+        // the action bar will automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -121,22 +120,23 @@ public class FlashCardActivity extends ActionBarActivity {
     }
 
     public void backButton() {
-        //TODO Make this go to previous card if one exists
+        // TODO: make this go to previous card if one exists
         if (currentIndex == 0) {
-            //TODO Pop up that alerts the user that there are no more previous cards
+            // TODO: pop up that alerts the user that there are no more previous cards
             return;
-        } else {
-            currentIndex--;
-            flashCardView.setText(fc.get(currentIndex).questionView());
-            questionDisplayed = true;
         }
+
+        currentIndex--;
+        flashCardView.setText(fc.get(currentIndex).questionView());
+        questionDisplayed = true;
     }
 
     public void nextButton() {
-        //TODO Make this go to the next card in the array, creating one if necessary
+        // TODO: make this go to the next card in the array, creating one if necessary
         if (currentIndex == fc.size() - 1) {
             fc.add(new FlashCard(pb.buildFlashCardProblem()));
         }
+
         currentIndex++;
         flashCardView.setText(fc.get(currentIndex).questionView());
         questionDisplayed = true;

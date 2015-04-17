@@ -14,38 +14,43 @@ import com.toomanycooksapp.mathapp.R;
 
 import java.util.Random;
 
+
 /**
  * A placeholder fragment containing a simple view.
  */
 public class PictureFragment extends Fragment {
+    public static final int NUMBERS[][] = {
+        {1, 2, 3, 4, 5},          // add
+        {1, 2, 3, 4, 5, 6, 7, 8}, // subtract
+        {2, 3, 4},                // multiply
+        {6, 8, 9, 12}             // divide
+    };
 
+    private static final int[][] DIVISORS = {
+        {2, 3},    // 6
+        {2, 4},    // 8
+        {3},       // 9
+        {2, 3, 4}, // 12
+    };
 
-    private int subject;
-    private int pass;
+    private static Random rand = new Random();
+    public static int answer = -1;
+
     private LinearLayout top;
     private LinearLayout bottom;
     private View vthis;
-    private final static Random RANDOM = new Random(System.currentTimeMillis());
-    public static final int NUMBERS[][] = {
-            /*ADD**/{1, 2, 3, 4, 5},
-            /*SUB**/{1, 2, 3, 4, 5, 6, 7, 8},
-            /*MULT*/{2, 3, 4},
-            /*DIV**/{6, 8, 9, 12}
-    };
-    private static final int[][] DIVISORS = {
-            /*6*/{2, 3},
-            /*8**/{2, 4},
-            /*9**/{3},
-            /*12*/{2, 3, 4},
-    };
-    public static int answer = -1;
+
+    private int pass;
+    private int subject;
 
     public PictureFragment() {
+        // do nothing
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(
+            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         vthis = inflater.inflate(R.layout.fragment_picture, container, false);
         top = (LinearLayout) vthis.findViewById(R.id.picture_x_layout);
         bottom = (LinearLayout) vthis.findViewById(R.id.picture_y_layout);
@@ -59,104 +64,100 @@ public class PictureFragment extends Fragment {
             case 1:
                 sub();
                 break;
-
             case 2:
                 mult();
                 break;
             case 3:
                 div();
                 break;
-
         }
-
 
         return vthis;
     }
 
     private void add() {
-        int x = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
-        int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
+        int x = NUMBERS[subject][rand.nextInt(NUMBERS[subject].length)];
+        int y = NUMBERS[subject][rand.nextInt(NUMBERS[subject].length)];
+        answer = x + y;
+
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
-        if (y == 1) {
-            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("square");
-        } else {
-            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("squares");
-        }
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
         if (y == 1) {
+            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("square");
             ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("more square");
         } else {
+            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("squares");
             ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("more squares");
         }
+
         for (int i = 0; i < x; i++) {
             ImageView square = new ImageView(getActivity());
             square.setPadding(5, 5, 5, 5);
             square.setImageResource(R.drawable.square_green);
             top.addView(square);
         }
+
         for (int i = 0; i < y; i++) {
             ImageView square = new ImageView(getActivity());
             square.setPadding(5, 5, 5, 5);
-
             square.setImageResource(R.drawable.square_green);
             bottom.addView(square);
         }
-
-        answer = x + y;
-
-
     }
 
     private void sub() {
-        int idx = RANDOM.nextInt(NUMBERS[subject].length);
+        int idx = rand.nextInt(NUMBERS[subject].length);
         int x = NUMBERS[subject][idx];
-        int y = NUMBERS[subject][RANDOM.nextInt(idx + 1)];
+        int y = NUMBERS[subject][rand.nextInt(idx + 1)];
+        answer = x - y;
 
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
+        ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
         if (y == 1) {
             ((TextView) vthis.findViewById(R.id.picture_lable)).setText("square");
-        } else {
-            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("squares");
-        }
-        ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
-        ((TextView) vthis.findViewById(R.id.picture_subject)).setText(DefinitionFragment.DEFINITIONS[subject] + " ");
-        if (y == 1) {
             ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("square");
         } else {
+            ((TextView) vthis.findViewById(R.id.picture_lable)).setText("squares");
             ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("squares");
         }
-        ((TextView) vthis.findViewById(R.id.picture_question)).setText("How many squares are left?");
-        answer = x - y;
+
+        ((TextView) vthis.findViewById(R.id.picture_subject)).setText(
+            DefinitionFragment.DEFINITIONS[subject] + " ");
+
+        ((TextView) vthis.findViewById(R.id.picture_question)).setText(
+            "How many squares are left?");
+
         for (int i = 0; i < x; i++) {
             ImageView square = new ImageView(getActivity());
             square.setPadding(5, 5, 5, 5);
             square.setImageResource(R.drawable.square_green);
             top.addView(square);
         }
+
         for (int i = 0; i < y; i++) {
             ImageView square = new ImageView(getActivity());
             square.setPadding(5, 5, 5, 5);
-
             square.setImageResource(R.drawable.square_green);
             bottom.addView(square);
         }
-
-
     }
 
     private void div() {
-        int index = RANDOM.nextInt(NUMBERS[subject].length);
+        int index = rand.nextInt(NUMBERS[subject].length);
         int x = NUMBERS[subject][index];
-        int y = DIVISORS[index][RANDOM.nextInt(DIVISORS[index].length)];
-
+        int y = DIVISORS[index][rand.nextInt(DIVISORS[index].length)];
+        answer = x / y;
 
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
-        ((TextView) vthis.findViewById(R.id.picture_subject)).setText(DefinitionFragment.DEFINITIONS[subject] + " ");
+        ((TextView) vthis.findViewById(R.id.picture_subject)).setText(
+            DefinitionFragment.DEFINITIONS[subject] + " ");
+
         ((TextView) vthis.findViewById(R.id.picture_into)).setText("them into ");
         ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("groups");
-        ((TextView) vthis.findViewById(R.id.picture_question)).setText("How many squares are in each group?");
-        answer = x / y;
+        ((TextView) vthis.findViewById(R.id.picture_question)).setText(
+            "How many squares are in each group?");
+
         bottom.setOrientation(LinearLayout.VERTICAL);
         for (int i = 0; i < x; i++) {
             ImageView square = new ImageView(getActivity());
@@ -175,24 +176,28 @@ public class PictureFragment extends Fragment {
                 square.setImageResource(R.drawable.square_green);
                 group.addView(square);
             }
+
             bottom.setDividerPadding(5);
             group.setPadding(20, 0, 20, 0);
             bottom.addView(group);
         }
     }
 
-
     private void mult() {
-        int x = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
-        int y = NUMBERS[subject][RANDOM.nextInt(NUMBERS[subject].length)];
+        int x = NUMBERS[subject][rand.nextInt(NUMBERS[subject].length)];
+        int y = NUMBERS[subject][rand.nextInt(NUMBERS[subject].length)];
+        answer = x * y;
 
         ((TextView) vthis.findViewById(R.id.picture_x)).setText("" + x);
         ((TextView) vthis.findViewById(R.id.picture_lable)).setText("squares");
         ((TextView) vthis.findViewById(R.id.picture_y)).setText("" + y);
-        ((TextView) vthis.findViewById(R.id.picture_subject)).setText(DefinitionFragment.DEFINITIONS[subject] + " ");
+        ((TextView) vthis.findViewById(R.id.picture_subject)).setText(
+            DefinitionFragment.DEFINITIONS[subject] + " ");
+
         ((TextView) vthis.findViewById(R.id.picture_lable2)).setText("times");
-        ((TextView) vthis.findViewById(R.id.picture_question)).setText("How many squares are there total?");
-        answer = x * y;
+        ((TextView) vthis.findViewById(R.id.picture_question)).setText(
+            "How many squares are there total?");
+
         bottom.setOrientation(LinearLayout.VERTICAL);
         for (int i = 0; i < x; i++) {
             ImageView square = new ImageView(getActivity());
@@ -200,6 +205,7 @@ public class PictureFragment extends Fragment {
             square.setImageResource(R.drawable.square_green);
             top.addView(square);
         }
+
         bottom.setOrientation(LinearLayout.VERTICAL);
         for (int i = 0; i < y; i++) {
             LinearLayout row = new LinearLayout(getActivity());
@@ -211,10 +217,10 @@ public class PictureFragment extends Fragment {
                 square.setImageResource(R.drawable.square_green);
                 row.addView(square);
             }
+
             bottom.setDividerPadding(5);
             row.setPadding(0, 20, 0, 20);
             bottom.addView(row);
         }
     }
-
 }

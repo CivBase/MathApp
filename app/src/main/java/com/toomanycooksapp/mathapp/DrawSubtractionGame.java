@@ -11,10 +11,9 @@ import android.view.View;
 
 import java.util.Random;
 
-/**
- * Created by david on 3/30/15.
- */
+
 public class DrawSubtractionGame extends View {
+    private static Random rand = new Random();
 
     private int goal;
     private int[] tiles = new int[5];
@@ -28,54 +27,54 @@ public class DrawSubtractionGame extends View {
         super(context);
     }
 
-
-    //create random goal number from 4 - 15
+    // create random goal number from 4 - 15
     private void createGoal() {
-        Random r = new Random();
-        goal = r.nextInt(15 - 4 + 1) + 4;
+        goal = rand.nextInt(15 - 4 + 1) + 4;
     }
 
     // produces random number between 2 and 4
-    // This number is the number of tiles that add up to product the goal
+    // this number is the number of tiles that add up to product the goal
     private void createTilesToReachGoal() {
-        Random r = new Random();
-        tilesToReachGoal = r.nextInt(4 - 2 + 1) + 2;
+        tilesToReachGoal = rand.nextInt(4 - 2 + 1) + 2;
     }
 
-    // Produces the tile values
-    // There will be tilesToReachGoal number of tiles that add up to the goal
+    // produces the tile values
+    // there will be tilesToReachGoal number of tiles that add up to the goal
     // the rest will be random
     // ex. if tilesToReachGoal = 3 and the goal = 9 three of the tiles would be
-    // something like 3, 5, 1 which add up to the goal and the other two would be
-    // random
+    // something like 3, 5, 1 which add up to the goal and the other two would be random
     private void createTiles() {
         int tempGoal = goal;
         int curTotal = 0;
 
         for (int i = 0; i < tilesToReachGoal - 1; i++) {
-            Random r = new Random();
-            tiles[i] = r.nextInt((tempGoal - (tilesToReachGoal - i)) - 1 + 1) + 1;
+            tiles[i] = rand.nextInt((tempGoal - (tilesToReachGoal - i)) - 1 + 1) + 1;
             tempGoal -= tiles[i];
             curTotal += tiles[i];
 
-            Log.d("tiles", "i: " + i + " tiles[i]: " + tiles[i] + " tempGoal: " + tempGoal + " goal: " + goal + " tilesToReachGoal: " + tilesToReachGoal + " curTotal: " + curTotal + " \n");
+            Log.d(
+                "tiles",
+                "i: " + i +
+                " tiles[i]: " + tiles[i] +
+                " tempGoal: " + tempGoal +
+                " goal: " + goal +
+                " tilesToReachGoal: " + tilesToReachGoal +
+                " curTotal: " + curTotal + " \n");
         }
 
         tiles[tilesToReachGoal - 1] = goal - curTotal;
 
-
         for (int i = tilesToReachGoal; i < 5; i++) {
-            Random r = new Random();
-            tiles[i] = r.nextInt(14 - 1 + 1) + 1;
+            tiles[i] = rand.nextInt(14 - 1 + 1) + 1;
         }
     }
 
-    // Shuffles tiles array
+    // shuffles tiles array
     private void shuffleArray() {
-        Random rnd = new Random();
         for (int i = tiles.length - 1; i > 0; i--) {
-            int index = rnd.nextInt(i + 1);
-            // Simple swap
+            int index = rand.nextInt(i + 1);
+
+            // simple swap
             int a = tiles[index];
             tiles[index] = tiles[i];
             tiles[i] = a;
@@ -85,8 +84,6 @@ public class DrawSubtractionGame extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-
         if (newGoal) {
             createGoal();
             createTilesToReachGoal();
@@ -124,31 +121,68 @@ public class DrawSubtractionGame extends View {
 
         for (int i = 0; i < tiles.length; i++) {
             if (tiles[i] != 0) {
-                canvas.drawText(String.valueOf(tiles[i]), (canvas.getWidth() / 6) * (i + 1), (canvas.getHeight() / 2), fillBlueText);
+                canvas.drawText(
+                    String.valueOf(tiles[i]),
+                    (canvas.getWidth() / 6) * (i + 1),
+                    (canvas.getHeight() / 2),
+                    fillBlueText);
             }
         }
-        canvas.drawText("GOAL: ", (canvas.getWidth() / 4) - 100, canvas.getHeight() / 4, fillBlueText);
-        canvas.drawText(String.valueOf(goal), (canvas.getWidth() / 2), (canvas.getHeight() / 4), fillBlueText);
 
-        canvas.drawText("SCORE: ", (canvas.getWidth() / 4) - 100, canvas.getHeight(), fillBlueText);
-        canvas.drawText(String.valueOf(score), (canvas.getWidth() / 2), canvas.getHeight(), fillBlueText);
+        canvas.drawText(
+            "GOAL: ",
+            (canvas.getWidth() / 4) - 100,
+            canvas.getHeight() / 4,
+            fillBlueText);
+
+        canvas.drawText(
+            String.valueOf(goal),
+            (canvas.getWidth() / 2),
+            (canvas.getHeight() / 4),
+            fillBlueText);
+
+        canvas.drawText(
+            "SCORE: ",
+            (canvas.getWidth() / 4) - 100,
+            canvas.getHeight(),
+            fillBlueText);
+
+        canvas.drawText(
+            String.valueOf(score),
+            (canvas.getWidth() / 2),
+            canvas.getHeight(),
+            fillBlueText);
 
         if (checkCorrect == goal) {
             score += 10;
             newGoal = true;
-            canvas.drawText("CORRECT", (canvas.getWidth() / 2) - 225, (canvas.getHeight() / 2) - 200, fillGreenText);
-            final Handler handler = new Handler();
+            canvas.drawText(
+                "CORRECT",
+                (canvas.getWidth() / 2) - 225,
+                (canvas.getHeight() / 2) - 200,
+                fillGreenText);
+
+            Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     invalidate();
                 }
             }, 500);
-
         }
+
         if (checkCorrect < goal) {
-            canvas.drawText("INCORRECT", (canvas.getWidth() / 2) - 225, (canvas.getHeight() / 2) - 200, fillRedText);
-            canvas.drawText("GAME OVER", (canvas.getWidth() / 2) - 225, (canvas.getHeight() / 2) + 200, fillRedText);
+            canvas.drawText(
+                "INCORRECT",
+                (canvas.getWidth() / 2) - 225,
+                (canvas.getHeight() / 2) - 200,
+                fillRedText);
+
+            canvas.drawText(
+                "GAME OVER",
+                (canvas.getWidth() / 2) - 225,
+                (canvas.getHeight() / 2) + 200,
+                fillRedText);
         }
     }
 
@@ -161,19 +195,23 @@ public class DrawSubtractionGame extends View {
                 float tapXSpace = event.getX();
                 float tapYSpace = event.getY();
 
-                if (tapYSpace <= ((canvasHeight / 2) + 100) && tapYSpace >= ((canvasHeight / 2) - 100)) {
+                if (tapYSpace <= ((canvasHeight / 2) + 100) &&
+                        tapYSpace >= ((canvasHeight / 2) - 100)) {
+
                     for (int i = 0; i < 5; i++) {
-                        if (tapXSpace > ((canvasWidth / 6) * (i + 1) - 100) && tapXSpace < ((canvasWidth / 6) * (i + 1) + 100)) {
+                        if (tapXSpace > ((canvasWidth / 6) * (i + 1) - 100) &&
+                                tapXSpace < ((canvasWidth / 6) * (i + 1) + 100)) {
+
                             tiles[i] = 0;
                         }
                     }
                     invalidate();
                     return true;
                 }
+
             default:
                 Log.d("Is here at least: ", String.valueOf(event.getAction()));
                 return super.onTouchEvent(event);
-
         }
     }
 }

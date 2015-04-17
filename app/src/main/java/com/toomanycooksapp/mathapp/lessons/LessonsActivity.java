@@ -1,27 +1,26 @@
 package com.toomanycooksapp.mathapp.lessons;
 
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.toomanycooksapp.mathapp.MainActivity;
+import com.toomanycooksapp.mathapp.Popup;
 import com.toomanycooksapp.mathapp.R;
 
-public class LessonsActivity extends ActionBarActivity implements View.OnClickListener {
 
+public class LessonsActivity extends ActionBarActivity implements View.OnClickListener {
+    public static final String[] SUBJECTS = {"ADD", "SUBTRACT", "MULTIPLY", "DIVIDE"};
 
     private Fragment current;
     private FragmentManager manager;
+
     private int pass = 0;
     private int subject;
-    public static final String[] SUBJECTS = {"ADD", "SUBTRACT", "MULTIPLY", "DIVIDE"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +28,10 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
         setContentView(R.layout.activity_lessons);
         manager = this.getFragmentManager();
         subject = getIntent().getIntExtra("subject", 0);
-
         addFragment(DefinitionFragment.class.getName());
-
     }
 
     private void addFragment(String name) {
-
         Fragment fragment = Fragment.instantiate(this, name);
         Bundle b = new Bundle();
         b.putInt("pass", pass);
@@ -45,17 +41,15 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
         invalidateOptionsMenu();
 
         manager.beginTransaction()
-                .replace(R.id.lesson_content, fragment)
-                .commit();
+            .replace(R.id.lesson_content, fragment)
+            .commit();
+
         current = fragment;
     }
 
-
-    //handle all transactions and events here
-
+    // handle all transactions and events here
     @Override
     public void onClick(View v) {
-
         switch (pass) {
             case 0:
                 onDefinitionClicks(v);
@@ -69,14 +63,11 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
             case 5:
                 onProblemClicks(v);
                 break;
-
         }
-
-
     }
 
-    private void onProblemClicks(View v) {
-        if (v.getId() == R.id.problem_submit) {
+    private void onProblemClicks(View view) {
+        if (view.getId() == R.id.problem_submit) {
             boolean passed = true;
             for (int i = 0; i < 4; i++) {
                 if (ProblemFragment.ANSWERKEYS[i] != ProblemFragment.ANSWERSGIVEN[i]) {
@@ -84,82 +75,98 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
                     break;
                 }
             }
-            if (passed) pass++;
-            if (pass != 5) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
-                alert.setMessage(passed ? "Well done! Get " + (5 - pass) + " more right and you finish the lesson!"
-                        : "Almost! You can do this! Get " + (5 - pass) + " more right and you finish the lesson!");
-                alert.setTitle(passed ? "Great Job!" : "Not Quite");
-                alert.setPositiveButton(passed ? "Next Question!" : "Try Again", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ((ProblemFragment) current).initQuestion(pass);
-                    }
 
-                });
-                AlertDialog popup = alert.create();
-                popup.show();
+            if (passed) {
+                pass++;
+            }
 
+            String title = passed ? "Great Job!" : "Not Quite";
+            if (pass < 5) {
+                String buttonText;
+                String message;
+                if (passed) {
+                    buttonText = "Next Question!";
+                    message = "Well done! Get " + (5 - pass) +
+                        " more right and you finish the lesson!";
+                } else {
+                    buttonText = "Try Again";
+                    message = "Almost! You can do this! Get " + (5 - pass) +
+                        " more right and you finish the lesson!";
+                }
 
-                return;
-            } else {
-                AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
-                alert.setMessage("Well done! You passed this lesson! ");
-                alert.setTitle(passed ? "Great Job!" : "Not Quite");
-                alert.setPositiveButton("Onward to next lesson!", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent lessonIntent = new Intent(LessonsActivity.this, MainActivity.class);
-                        startActivity(lessonIntent);
-                    }
-
-                });
-                AlertDialog popup = alert.create();
-                popup.show();
+                Popup.create(
+                    view.getContext(),
+                    title,
+                    message,
+                    buttonText,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ((ProblemFragment) current).initQuestion(pass);
+                        }
+                    });
 
                 return;
             }
 
+            Popup.create(
+                view.getContext(),
+                title,
+                "Well done! You passed this lesson!",
+                "Onward to next lesson!",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((ProblemFragment) current).initQuestion(pass);
+                    }
+                });
         }
-
-
     }
 
+    private void onPictureClicks(View view) {
+        if (view.getId() == R.id.picture_submit) {
+            int answerGiven = Integer.parseInt(
+                "" + ((EditText) findViewById(R.id.picture_answer)).getText());
 
-    private void onPictureClicks(View v) {
+            int answerKey = PictureFragment.answer;
+            int x = Integer.parseInt("" + ((TextView) findViewById(R.id.picture_x)).getText());
+            int y = Integer.parseInt("" + ((TextView) findViewById(R.id.picture_y)).getText());
+            String equation = x + " " + SUBJECTS[subject] + (subject > 1 ? " " : " by ") + y +
+                " equals " + answerKey;
 
-        if (v.getId() == R.id.picture_submit) {
-            final int answerGiven = Integer.parseInt("" + ((EditText) findViewById(R.id.picture_answer)).getText());
-            final int answerKey = PictureFragment.answer;
-            final int x = Integer.parseInt("" + ((TextView) findViewById(R.id.picture_x)).getText());
-            final int y = Integer.parseInt("" + ((TextView) findViewById(R.id.picture_y)).getText());
+            if (answerGiven == answerKey) {
+                Popup.create(
+                    view.getContext(),
+                    "Great Job!",
+                    equation,
+                    "Onward!",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            pass++;
+                            addFragment(ProblemFragment.class.getName());
+                        }
+                    });
 
-            final boolean passed = answerGiven == answerKey;
-            AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
-            alert.setMessage(x + " " + SUBJECTS[subject] + (subject > 1 ? " " : " by ")
-                    + y + " equals " + answerKey + (passed ? "" : " not " + answerGiven));
-            alert.setTitle(passed ? "Great Job!" : "Not Quite");
-            alert.setPositiveButton(passed ? "Onward!" : "Try Again", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (passed) {
-                        pass++;
-                        addFragment(ProblemFragment.class.getName());
-                    } else {
+                return;
+            }
+
+            Popup.create(
+                view.getContext(),
+                "Not Quite",
+                equation + ", not " + answerGiven,
+                "Try Again",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
                         addFragment(PictureFragment.class.getName());
                     }
-                }
-
-            });
-            AlertDialog popup = alert.create();
-            popup.show();
-
+                });
         }
     }
 
-    private void onDefinitionClicks(View v) {
-
-        int id = v.getId();
+    private void onDefinitionClicks(View view) {
+        int id = view.getId();
         int pressed = -1;
         switch (id) {
             case R.id.define_increase:
@@ -175,25 +182,37 @@ public class LessonsActivity extends ActionBarActivity implements View.OnClickLi
                 pressed = 1;
                 break;
         }
-        final boolean passed = subject == pressed;
-        //pop ups
-        AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
-        alert.setMessage("To " + SUBJECTS[pressed] + " means to " + DefinitionFragment.DEFINITIONS[pressed] + ".");
-        alert.setTitle(passed ? "Great Job!" : "Not Quite");
-        alert.setPositiveButton(passed ? "Onward!" : "Try Again", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (passed) {
-                    pass++;
-                    addFragment(PictureFragment.class.getName());
-                } else {
-                    //do nothing
+
+        String message = "To " + SUBJECTS[pressed] + " means to " +
+            DefinitionFragment.DEFINITIONS[pressed] + ".";
+
+        if (subject == pressed) {
+            Popup.create(
+                view.getContext(),
+                "Great Job!",
+                message,
+                "Onward!",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        pass++;
+                        addFragment(PictureFragment.class.getName());
+                    }
+                });
+
+            return;
+        }
+
+        Popup.create(
+            view.getContext(),
+            "Not Quite",
+            message,
+            "Try Again",
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // do nothing
                 }
-            }
-
-        });
-        AlertDialog popup = alert.create();
-        popup.show();
-
+            });
     }
 }
